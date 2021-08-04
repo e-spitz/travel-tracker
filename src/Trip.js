@@ -7,7 +7,7 @@ class Trip {
     this.date = singleTrip.date;
     this.duration = singleTrip.duration;
     this.status = singleTrip.status;
-    this.suggestedActivites = singleTrip.suggestedActivities;
+    this.suggestedActivites = [];
   }
 }
 
