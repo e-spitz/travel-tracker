@@ -1,14 +1,18 @@
 import { expect } from 'chai';
 import tripsData from './test-data/trips-data';
+import travelers from './test-data/travelers-data'
 import Trip from '../src/Trip.js';
+import Traveler from '../src/Traveler.js';
 
 describe('Trip', () => {
-  let trip1, trip2, trip3;
+  let trip1, trip2, trip3, trips;
+  let traveler;
 
   beforeEach(() => {
     trip1 = new Trip(tripsData[0])
     trip2 = new Trip(tripsData[5])
     trip3 = new Trip(tripsData[10])
+    traveler = new Traveler(travelers[0])
   })
 
   it('should be a function', () => {
@@ -67,5 +71,18 @@ describe('Trip', () => {
     expect(trip1.suggestedActivities).to.deep.equal([]);
     expect(trip2.suggestedActivities).to.deep.equal([]);
     expect(trip3.suggestedActivities).to.deep.equal([]);
+  });
+
+  it('should be able to find a start date time stamp', () => {
+    trip1.getTripTimeStamps();
+    expect(trip1.startDateTimeStamp).to.be.a('number');
+    expect(trip1.startDateTimeStamp).to.equal(1568613600000);
+    trip2.getTripTimeStamps();
+    expect(trip2.startDateTimeStamp).to.equal(1593410400000);
+  });
+
+  it('should be able to find an end date time stamp', () => {
+    trip3.getTripTimeStamps();
+    expect(trip3.endDateTimeStamp).to.equal(1603000800000);
   });
 });
