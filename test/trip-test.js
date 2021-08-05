@@ -5,39 +5,6 @@ import Trip from '../src/Trip.js';
 describe('Trip', () => {
   let trip1, trip2, trip3;
 
-  // {
-  //   "id": 1,
-  //   "userID": 44,
-  //   "destinationID": 49,
-  //   "travelers": 1,
-  //   "date": "2019/09/16",
-  //   "duration": 8,
-  //   "status": "pending",
-  //   "suggestedActivities": []
-  // }
-  // {
-  //   "id": 6,
-  //   "userID": 29,
-  //   "destinationID": 35,
-  //   "travelers": 3,
-  //   "date": "2020/06/29",
-  //   "duration": 9,
-  //   "status": "approved",
-  //   "suggestedActivities": []
-  // }
-  // {
-  //   "id": 11,
-  //   "userID": 50,
-  //   "destinationID": 5,
-  //   "travelers": 4,
-  //   "date": "2020/10/14",
-  //   "duration": 4,
-  //   "status": "approved",
-  //   "suggestedActivities": []
-  // }
-
-
-
   beforeEach(() => {
     trip1 = new Trip(tripsData[0])
     trip2 = new Trip(tripsData[5])
