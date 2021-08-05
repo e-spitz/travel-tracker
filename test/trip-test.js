@@ -90,5 +90,6 @@ describe('Trip', () => {
     expect(trip2.tripCost).to.equal(2310);
     trip3.calculateTripCost(destinations);
     expect(trip3.tripCost).to.equal(3520);
+    expect(trip1.tripCost, trip2.tripCost, trip3.tripCost).to.be.a('number');
   });
 });

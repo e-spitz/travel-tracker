@@ -22,18 +22,11 @@ class Trip {
   }
 
   calculateTripCost(destinations) {
-    //pass in destinations
-    //match dest id to trip id (this.destinationID)
-    //estimatedLodging * this.duration
-    //estimatedFlight * this.travelers
-    //add the two together for total
-    //multiply by 1.1 to add 10% travel agent fee
     const matchedDestination = destinations.find(dest => dest.id === this.destinationID);
     const lodgingTotal = matchedDestination.estimatedLodgingCostPerDay * this.duration;
     const flightTotal = matchedDestination.estimatedFlightCostPerPerson * this.travelers;
     const tripTotal = ((lodgingTotal + flightTotal) * 1.1);
     this.tripCost = Math.round(tripTotal);
-    console.log(this.tripCost);
   }
 
 }
