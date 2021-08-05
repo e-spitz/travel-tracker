@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import tripsData from './test-data/trips-data';
+import trips from './test-data/trips-data';
 import destinations from './test-data/destination-data';
 import travelers from './test-data/travelers-data';
 import Trip from '../src/Trip.js';
