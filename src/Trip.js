@@ -10,14 +10,30 @@ class Trip {
     this.suggestedActivities = singleTrip.suggestedActivities;
     this.startDateTimeStamp = 0;
     this.endDateTimeStamp = 0;
+    this.tripCost = 0;
   }
 
   getTripTimeStamps() {
-   let startTime = new Date(this.date).getTime();
-   let addedTime = new Date(this.date).getDate() + this.duration;
-   let endTime = new Date(this.date).setDate(addedTime);
+   const startTime = new Date(this.date).getTime();
+   const addedTime = new Date(this.date).getDate() + this.duration;
+   const endTime = new Date(this.date).setDate(addedTime);
    this.startDateTimeStamp = startTime;
    this.endDateTimeStamp = endTime;
+  }
+
+  calculateTripCost(destinations) {
+    //pass in destinations
+    //match dest id to trip id (this.destinationID)
+    //estimatedLodging * this.duration
+    //estimatedFlight * this.travelers
+    //add the two together for total
+    //multiply by 1.1 to add 10% travel agent fee
+    const matchedDestination = destinations.find(dest => dest.id === this.destinationID);
+    const lodgingTotal = matchedDestination.estimatedLodgingCostPerDay * this.duration;
+    const flightTotal = matchedDestination.estimatedFlightCostPerPerson * this.travelers;
+    const tripTotal = ((lodgingTotal + flightTotal) * 1.1);
+    this.tripCost = Math.round(tripTotal);
+    console.log(this.tripCost);
   }
 
 }

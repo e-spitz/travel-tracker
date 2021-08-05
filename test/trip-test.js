@@ -1,18 +1,15 @@
 import { expect } from 'chai';
-import tripsData from './test-data/trips-data';
-import travelers from './test-data/travelers-data'
+import trips from './test-data/trips-data';
+import destinations from './test-data/destination-data';
 import Trip from '../src/Trip.js';
-import Traveler from '../src/Traveler.js';
 
 describe('Trip', () => {
-  let trip1, trip2, trip3, trips;
-  let traveler;
+  let trip1, trip2, trip3;
 
   beforeEach(() => {
-    trip1 = new Trip(tripsData[0])
-    trip2 = new Trip(tripsData[5])
-    trip3 = new Trip(tripsData[10])
-    traveler = new Traveler(travelers[0])
+    trip1 = new Trip(trips[0])
+    trip2 = new Trip(trips[5])
+    trip3 = new Trip(trips[10])
   })
 
   it('should be a function', () => {
@@ -84,5 +81,14 @@ describe('Trip', () => {
   it('should be able to find an end date time stamp', () => {
     trip3.getTripTimeStamps();
     expect(trip3.endDateTimeStamp).to.equal(1603000800000);
+  });
+
+  it('should be able to calculate the cost of a trip including the travel agent\'s fee', () => {
+    trip1.calculateTripCost(destinations);
+    expect(trip1.tripCost).to.equal(5819);
+    trip2.calculateTripCost(destinations);
+    expect(trip2.tripCost).to.equal(2310);
+    trip3.calculateTripCost(destinations);
+    expect(trip3.tripCost).to.equal(3520);
   });
 });
