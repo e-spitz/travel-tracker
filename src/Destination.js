@@ -5,7 +5,7 @@ class Destination {
     this.estimatedLodgingCostPerDay = singleDest.estimatedLodgingCostPerDay;
     this.estimatedFlightCostPerPerson = singleDest.estimatedFlightCostPerPerson;
     this.image = singleDest.image;
-    this.alt = singleDest.alt;
+    this.alt = singleDest.alt; 
   }
 }
 
