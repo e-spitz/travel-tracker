@@ -17,11 +17,22 @@ class Traveler {
         this.trips.push(new Trip(trip))
       }
     })
-    this.trips.forEach(trip => trip.getTripTimeStamps())
-    this.trips.forEach(trip => trip.calculateTripCost(destinationsData))
+    this.trips.forEach(trip => trip.getTripTimeStamps());
+    this.trips.forEach(trip => trip.calculateTripCost(destinationsData));
+    this.sortTrips();
 }
 
-//past trips
+//need to sort trips based of time stamps in order to determine past/present/etc
+
+sortTrips() {
+  this.trips.sort((a, b) => {
+    return new Date(a.date) - new Date(b.date);
+  });
+}
+
+findPastTrips() {
+
+}
 
 
 //present trips
@@ -31,6 +42,11 @@ class Traveler {
 
 
 //pending trips
+
+
+//calculate total amount spent
+
+
 }
 
 export default Traveler;

@@ -82,8 +82,8 @@ describe('Traveler', () => {
       'tripCost': 4125
     }]);
     traveler3.findTrips(trips, destinations)
-    expect(traveler3.trips[1]).to.be.an('object');
-    expect(traveler3.trips[1]).to.deep.equal({
+    expect(traveler3.trips[0]).to.be.an('object');
+    expect(traveler3.trips[0]).to.deep.equal({
       'id': 15,
       'userID': 50,
       'destinationID': 13,
@@ -98,4 +98,45 @@ describe('Traveler', () => {
     });
   });
 
+  it('should have a way to sort trips by date', () => {
+    traveler2.findTrips(trips, destinations)
+    traveler2.sortTrips()
+    expect(traveler2.trips).to.deep.equal([{
+      'id': 42,
+      'userID': 11,
+      'destinationID': 32,
+      'travelers': 1,
+      'date': '2020/08/08',
+      'duration': 14,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1596866400000,
+      'endDateTimeStamp': 1598076000000,
+      'tripCost': 2013
+    }, {
+      'id': 150,
+      'userID': 11,
+      'destinationID': 20,
+      'travelers': 5,
+      'date': '2020/10/29',
+      'duration': 8,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1603951200000,
+      'endDateTimeStamp': 1604646000000,
+      'tripCost': 2902
+    }, {
+      'id': 31,
+      'userID': 11,
+      'destinationID': 33,
+      'travelers': 3,
+      'date': '2020/12/19',
+      'duration': 15,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1608361200000,
+      'endDateTimeStamp': 1609657200000,
+      'tripCost': 16863
+    }]);
+  });
 });
