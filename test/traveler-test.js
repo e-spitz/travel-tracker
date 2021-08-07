@@ -66,7 +66,7 @@ describe('Traveler', () => {
   });
 
   it('should be able to populate trips for a traveler', () => {
-    traveler1.findTrips(trips)
+    traveler1.findTrips(trips, destinations)
     expect(traveler1.trips).to.be.an('array')
     expect(traveler1.trips).to.deep.equal([{
       'id': 117,
@@ -77,13 +77,13 @@ describe('Traveler', () => {
       'duration': 15,
       'status': 'approved',
       'suggestedActivities': [],
-      'startDateTimeStamp': 0,
-      'endDateTimeStamp': 0,
-      'tripCost': 0
+      'startDateTimeStamp': 1610175600000,
+      'endDateTimeStamp': 1611471600000,
+      'tripCost': 4125
     }]);
-  traveler3.findTrips(trips)
-  expect(traveler3.trips[1]).to.be.an('object');
-  expect(traveler3.trips[1]).to.deep.equal({
+    traveler3.findTrips(trips, destinations)
+    expect(traveler3.trips[1]).to.be.an('object');
+    expect(traveler3.trips[1]).to.deep.equal({
       'id': 15,
       'userID': 50,
       'destinationID': 13,
@@ -92,9 +92,9 @@ describe('Traveler', () => {
       'duration': 6,
       'status': 'approved',
       'suggestedActivities': [],
-      'startDateTimeStamp': 0,
-      'endDateTimeStamp': 0,
-      'tripCost': 0
+      'startDateTimeStamp': 1593842400000,
+      'endDateTimeStamp': 1594360800000,
+      'tripCost': 4290
     });
   });
 
