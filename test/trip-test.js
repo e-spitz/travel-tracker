@@ -1,14 +1,15 @@
 import { expect } from 'chai';
-import tripsData from './test-data/trips-data';
+import trips from './test-data/trips-data';
+import destinations from './test-data/destination-data';
 import Trip from '../src/Trip.js';
 
 describe('Trip', () => {
   let trip1, trip2, trip3;
 
   beforeEach(() => {
-    trip1 = new Trip(tripsData[0])
-    trip2 = new Trip(tripsData[5])
-    trip3 = new Trip(tripsData[10])
+    trip1 = new Trip(trips[0])
+    trip2 = new Trip(trips[5])
+    trip3 = new Trip(trips[10])
   })
 
   it('should be a function', () => {
@@ -67,5 +68,40 @@ describe('Trip', () => {
     expect(trip1.suggestedActivities).to.deep.equal([]);
     expect(trip2.suggestedActivities).to.deep.equal([]);
     expect(trip3.suggestedActivities).to.deep.equal([]);
+  });
+
+  it('should be able to find a start date time stamp', () => {
+    trip1.getTripTimeStamps();
+    expect(trip1.startDateTimeStamp).to.be.a('number');
+    expect(trip1.startDateTimeStamp).to.equal(1568613600000);
+    trip2.getTripTimeStamps();
+    expect(trip2.startDateTimeStamp).to.equal(1593410400000);
+  });
+
+  it('should be able to find an end date time stamp', () => {
+    trip3.getTripTimeStamps();
+    expect(trip3.endDateTimeStamp).to.equal(1603000800000);
+  });
+
+  it('should be able to calculate the cost of a trip including the travel agent\'s fee', () => {
+    trip1.calculateTripCost(destinations);
+    expect(trip1.tripCost).to.equal(5819);
+    trip2.calculateTripCost(destinations);
+    expect(trip2.tripCost).to.equal(2310);
+    trip3.calculateTripCost(destinations);
+    expect(trip3.tripCost).to.equal(3520);
+    expect(trip1.tripCost, trip2.tripCost, trip3.tripCost).to.be.a('number');
+  });
+
+  it('should be able to calculate total cost of a trip per person', () => {
+    const total = trip1.calculateTripCost(destinations);
+    const perPerson = trip1.calculateCostPerPersonPerTrip(total);
+    expect(perPerson).to.equal(5819);
+    const total2 = trip2.calculateTripCost(destinations);
+    const perPerson2 = trip2.calculateCostPerPersonPerTrip(total2);
+    expect(perPerson2).to.equal(770);
+    const total3 = trip3.calculateTripCost(destinations);
+    const perPerson3 = trip3.calculateCostPerPersonPerTrip(total3);
+    expect(perPerson3).to.equal(880);
   });
 });
