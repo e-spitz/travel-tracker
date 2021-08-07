@@ -16,11 +16,18 @@ window.addEventListener('load', () => {
 
 const start = () => {
   setUpTrips();
+  setUpDestinations();
 }
 
 const setUpTrips = () => {
   fetchAPIData('trips')
   .then(data => allTrips = data.trips)
+}
+
+const setUpDestinations = () => {
+  fetchAPIData('destinations')
+  .then(data => allDestinations = data.destinations)
+  .then(data => console.log(allDestinations))
 }
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
