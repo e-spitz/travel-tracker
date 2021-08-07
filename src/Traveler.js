@@ -57,8 +57,13 @@ class Traveler {
       return upcomingTrips;
   }
 
-
-//pending trips
+  findPendingTrips() {
+    const pendingTrips = this.trips.filter(trip => trip.status === 'pending');
+    if (!pendingTrips.length) {
+      return 'You have no trips to be approved at this time.';
+    }
+    return pendingTrips;
+  }
 
 
 //calculate total amount spent

@@ -14,12 +14,6 @@ describe('Traveler', () => {
     traveler1 = new Traveler(travelers[0]);
     traveler2 = new Traveler(travelers[10]);
     traveler3 = new Traveler(travelers[49]);
-
-
-    // allDestinations = destinations.forEach(dest => new Destination(dest));
-    // console.log('a', allDestinations);
-    // allTrips = trips.forEach(trip => new Trip(trip));
-    // console.log('b', allTrips);
   });
 
   it('should be a function', () => {
@@ -238,6 +232,29 @@ describe('Traveler', () => {
     traveler3.findTrips(trips, destinations);
     const futureTrips2 = traveler3.findUpcomingTrips(date);
     expect(futureTrips2).to.equal('You have no future trips scheduled. Time for a vacation!');
+  });
+
+  it('should be able to find pending status trips', () => {
+    const traveler4 = new Traveler(travelers[47])
+    traveler4.findTrips(trips, destinations);
+    const pendingTrips = traveler4.findPendingTrips()
+    expect(pendingTrips).to.deep.equal([{
+      'id': 180,
+      'userID': 48,
+      'destinationID': 14,
+      'travelers': 1,
+      'date': '2020/09/06',
+      'duration': 12,
+      'status': 'pending',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1599372000000,
+      'endDateTimeStamp': 1600408800000,
+      'tripCost': 1837
+    }])
+
+    traveler3.findTrips(trips, destinations);
+    const pendingTrips2 = traveler3.findPendingTrips();
+    expect(pendingTrips2).to.equal('You have no trips to be approved at this time.');
   });
 
 
