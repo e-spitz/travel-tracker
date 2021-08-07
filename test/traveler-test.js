@@ -268,6 +268,11 @@ describe('Traveler', () => {
     traveler4.findTrips(trips, destinations);
     traveler4.calculateTotalAmountSpent(date, destinations);
     expect(traveler4.amountSpent).to.equal(34716);
+
+    date = '2018/03/12';
+    traveler4.findTrips(trips, destinations);
+    const total = traveler4.calculateTotalAmountSpent(date, destinations);
+    expect(total).to.equal('Doh! It looks like you didn\'t travel this year.');
   });
 
 
