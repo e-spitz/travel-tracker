@@ -186,13 +186,17 @@ describe('Traveler', () => {
       'endDateTimeStamp': 1604646000000,
       'tripCost': 2902
     }]);
+
+    date = '2020/08/07'
+    const trip = traveler2.findPastTrips(date);
+    expect(trip).to.equal('Looks like you haven\'t been travelin\' much...');
   });
 
   it('should be able to find present trips', () => {
     date = '2020/10/31'
     traveler2.findTrips(trips, destinations)
-    const currentTrips = traveler2.findPresentTrips(date)
-    expect(currentTrips).to.deep.equal([{
+    const presentTrips = traveler2.findPresentTrips(date)
+    expect(presentTrips).to.deep.equal([{
       'id': 150,
       'userID': 11,
       'destinationID': 20,
@@ -208,8 +212,8 @@ describe('Traveler', () => {
 
     date = '2020/07/11'
     traveler3.findTrips(trips, destinations);
-    const currentTrips2 = traveler3.findPresentTrips(date);
-    expect(currentTrips2).to.equal('You have no present trips scheduled at this time.');
+    const presentTrips2 = traveler3.findPresentTrips(date);
+    expect(presentTrips2).to.equal('You have no present trips scheduled at this time. Time for a vacation!');
   });
 
 
