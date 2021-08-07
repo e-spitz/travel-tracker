@@ -8,7 +8,7 @@ import Destination from '../src/Destination.js';
 
 describe('Traveler', () => {
   let traveler1, traveler2, traveler3;
-  let date = '2020/10/29';
+  let date;
 
   beforeEach(() => {
     traveler1 = new Traveler(travelers[0]);
@@ -142,6 +142,7 @@ describe('Traveler', () => {
   });
 
   it('should be able to find previous trips', () => {
+    date = '2020/10/29'
     traveler2.findTrips(trips, destinations);
     const previousTrips = traveler2.findPastTrips(date)
     expect(previousTrips).to.deep.equal([{
@@ -189,7 +190,7 @@ describe('Traveler', () => {
 
     date = '2020/08/07'
     const trip = traveler2.findPastTrips(date);
-    expect(trip).to.equal('Looks like you haven\'t been travelin\' much...');
+    expect(trip).to.equal('You haven\'t been travelin\' much...');
   });
 
   it('should be able to find present trips', () => {
@@ -213,7 +214,30 @@ describe('Traveler', () => {
     date = '2020/07/11'
     traveler3.findTrips(trips, destinations);
     const presentTrips2 = traveler3.findPresentTrips(date);
-    expect(presentTrips2).to.equal('You have no present trips scheduled at this time. Time for a vacation!');
+    expect(presentTrips2).to.equal('You are not currently on a trip. Bummer!');
+  });
+
+  it('should be able to find upcoming trips', () => {
+    date = '2021/01/08';
+    traveler1.findTrips(trips, destinations);
+    const futureTrips = traveler1.findUpcomingTrips(date);
+    expect(futureTrips).to.deep.equal([{
+      'id': 117,
+      'userID': 1,
+      'destinationID': 28,
+      'travelers': 3,
+      'date': '2021/01/09',
+      'duration': 15,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1610175600000,
+      'endDateTimeStamp': 1611471600000,
+      'tripCost': 4125
+    }]);
+    date = '2021/02/13';
+    traveler3.findTrips(trips, destinations);
+    const futureTrips2 = traveler3.findUpcomingTrips(date);
+    expect(futureTrips2).to.equal('You have no future trips scheduled. Time for a vacation!');
   });
 
 

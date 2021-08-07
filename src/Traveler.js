@@ -34,7 +34,7 @@ class Traveler {
     const todayTimeStamp = new Date(todayDate).getTime();
     const pastTrips = this.trips.filter(trip => trip.endDateTimeStamp < todayTimeStamp);
     if (!pastTrips.length) {
-      return 'Looks like you haven\'t been travelin\' much...';
+      return 'You haven\'t been travelin\' much...';
     }
       return pastTrips;
   }
@@ -43,17 +43,19 @@ class Traveler {
     const todayTimeStamp = new Date(todayDate).getTime();
     const presentTrips = this.trips.filter(trip => trip.startDateTimeStamp <= todayTimeStamp && trip.endDateTimeStamp >= todayTimeStamp)
     if (!presentTrips.length) {
-      return 'You have no present trips scheduled at this time. Time for a vacation!';
+      return 'You are not currently on a trip. Bummer!';
     }
       return presentTrips;
   }
 
-
-
-//present trips
-
-
-//upcoming trips
+  findUpcomingTrips(todayDate) {
+    const todayTimeStamp = new Date(todayDate).getTime();
+    const upcomingTrips = this.trips.filter(trip => trip.startDateTimeStamp > todayTimeStamp)
+    if (!upcomingTrips.length) {
+      return 'You have no future trips scheduled. Time for a vacation!';
+    }
+      return upcomingTrips;
+  }
 
 
 //pending trips
