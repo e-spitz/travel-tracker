@@ -9,28 +9,16 @@ import Destination from '../src/Destination.js';
 describe('Traveler', () => {
   let traveler1, traveler2, traveler3;
   let date = '2020/01/09';
-  let allDestinations;
 
   beforeEach(() => {
     traveler1 = new Traveler(travelers[0]);
-    // {
-    //     "id": 1,
-    //     "name": "Ham Leadbeater",
-    //     "travelerType": "relaxer"
-    // }
     traveler2 = new Traveler(travelers[10]);
-    // {
-    //     "id": 11,
-    //     "name": "Joy Dovington",
-    //     "travelerType": "history buff"
-    // }
     traveler3 = new Traveler(travelers[49]);
-    // {
-    //     "id": 50,
-    //     "name": "Morey Flanders",
-    //     "travelerType": "foodie"
-    // }
-    allDestinations = destinations.forEach(dest => new Destination(dest));
+
+    // allDestinations = destinations.forEach(dest => new Destination(dest));
+    // console.log('a', allDestinations);
+    // allTrips = trips.forEach(trip => new Trip(trip));
+    // console.log('b', allTrips);
   });
 
   it('should be a function', () => {
@@ -76,4 +64,38 @@ describe('Traveler', () => {
     expect(traveler2.amountSpent).to.equal(0);
     expect(traveler3.amountSpent).to.equal(0);
   });
+
+  it('should be able to populate trips for a traveler', () => {
+    traveler1.findTrips(trips)
+    expect(traveler1.trips).to.be.an('array')
+    expect(traveler1.trips).to.deep.equal([{
+      'id': 117,
+      'userID': 1,
+      'destinationID': 28,
+      'travelers': 3,
+      'date': '2021/01/09',
+      'duration': 15,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 0,
+      'endDateTimeStamp': 0,
+      'tripCost': 0
+    }]);
+  traveler3.findTrips(trips)
+  expect(traveler3.trips[1]).to.be.an('object');
+  expect(traveler3.trips[1]).to.deep.equal({
+      'id': 15,
+      'userID': 50,
+      'destinationID': 13,
+      'travelers': 3,
+      'date': '2020/07/04',
+      'duration': 6,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 0,
+      'endDateTimeStamp': 0,
+      'tripCost': 0
+    });
+  });
+
 });
