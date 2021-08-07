@@ -275,5 +275,4 @@ describe('Traveler', () => {
     expect(total).to.equal('Doh! It looks like you didn\'t travel this year.');
   });
 
-
 });
