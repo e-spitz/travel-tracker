@@ -26,7 +26,13 @@ class Trip {
     const lodgingTotal = matchedDestination.estimatedLodgingCostPerDay * this.duration;
     const flightTotal = matchedDestination.estimatedFlightCostPerPerson * this.travelers;
     const tripTotal = ((lodgingTotal + flightTotal) * 1.1);
-    this.tripCost = Math.round(tripTotal);
+    this.tripCost = ~~(tripTotal)
+    return this.tripCost;
+  }
+
+  calculateCostPerPersonPerTrip(totalCost) {
+    const perPerson = totalCost / this.travelers;
+    return perPerson;
   }
 
 }

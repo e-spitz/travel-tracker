@@ -92,4 +92,16 @@ describe('Trip', () => {
     expect(trip3.tripCost).to.equal(3520);
     expect(trip1.tripCost, trip2.tripCost, trip3.tripCost).to.be.a('number');
   });
+
+  it('should be able to calculate total cost of a trip per person', () => {
+    const total = trip1.calculateTripCost(destinations);
+    const perPerson = trip1.calculateCostPerPersonPerTrip(total);
+    expect(perPerson).to.equal(5819);
+    const total2 = trip2.calculateTripCost(destinations);
+    const perPerson2 = trip2.calculateCostPerPersonPerTrip(total2);
+    expect(perPerson2).to.equal(770);
+    const total3 = trip3.calculateTripCost(destinations);
+    const perPerson3 = trip3.calculateCostPerPersonPerTrip(total3);
+    expect(perPerson3).to.equal(880);
+  });
 });
