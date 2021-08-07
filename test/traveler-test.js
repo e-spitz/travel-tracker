@@ -257,5 +257,18 @@ describe('Traveler', () => {
     expect(pendingTrips2).to.equal('You have no trips to be approved at this time.');
   });
 
+  it('should have a way to calculate total amount spent for the year', () => {
+    const traveler4 = new Traveler(travelers[47]);
+    date = '2020/10/29';
+    traveler4.findTrips(trips, destinations);
+    traveler4.calculateTotalAmountSpent(date, destinations);
+    expect(traveler4.amountSpent).to.equal(15141);
+
+    date = '2019/05/20';
+    traveler4.findTrips(trips, destinations);
+    traveler4.calculateTotalAmountSpent(date, destinations);
+    expect(traveler4.amountSpent).to.equal(34716);
+  });
+
 
 });

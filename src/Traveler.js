@@ -10,7 +10,6 @@ class Traveler {
     this.amountSpent = 0;
   }
 
-  //find all trip.userIDs that match traveler.id and push in to this.trips []
   findTrips(tripsData, destinationsData) {
     tripsData.forEach(trip => {
       if (trip.userID === this.id) {
@@ -21,8 +20,6 @@ class Traveler {
     this.trips.forEach(trip => trip.calculateTripCost(destinationsData));
     this.sortTrips();
 }
-
-//need to sort trips based of time stamps in order to determine past/present/etc
 
   sortTrips() {
     this.trips.sort((a, b) => {
@@ -65,9 +62,16 @@ class Traveler {
     return pendingTrips;
   }
 
-
-//calculate total amount spent
-
+  calculateTotalAmountSpent(todayDate, destinationsData) {
+    const currentYear = todayDate.split('/')[0]
+    this.amountSpent = this.trips.reduce((sum, trip) => {
+      let tripYear = trip.date.split('/')[0]
+      if (tripYear === currentYear) {
+        sum += trip.calculateTripCost(destinationsData)
+      }
+      return sum;
+    }, 0)
+  }
 
 }
 
