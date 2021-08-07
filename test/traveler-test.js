@@ -157,7 +157,7 @@ describe('Traveler', () => {
       'endDateTimeStamp': 1598076000000,
       'tripCost': 2013
     }]);
-    
+
     date = '2020/12/19';
     const previousTrips2 = traveler2.findPastTrips(date);
     expect(previousTrips2.length).to.equal(2);
@@ -186,6 +186,30 @@ describe('Traveler', () => {
       'endDateTimeStamp': 1604646000000,
       'tripCost': 2902
     }]);
+  });
+
+  it('should be able to find present trips', () => {
+    date = '2020/10/31'
+    traveler2.findTrips(trips, destinations)
+    const currentTrips = traveler2.findPresentTrips(date)
+    expect(currentTrips).to.deep.equal([{
+      'id': 150,
+      'userID': 11,
+      'destinationID': 20,
+      'travelers': 5,
+      'date': '2020/10/29',
+      'duration': 8,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1603951200000,
+      'endDateTimeStamp': 1604646000000,
+      'tripCost': 2902
+    }])
+
+    date = '2020/07/11'
+    traveler3.findTrips(trips, destinations);
+    const currentTrips2 = traveler3.findPresentTrips(date);
+    expect(currentTrips2).to.equal('You have no present trips scheduled at this time.');
   });
 
 

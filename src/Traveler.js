@@ -35,6 +35,15 @@ class Traveler {
     return this.trips.filter(trip => trip.endDateTimeStamp < todayTimeStamp)
   }
 
+  findPresentTrips(todayDate) {
+    const todayTimeStamp = new Date(todayDate).getTime();
+    const presentTrips = this.trips.filter(trip => trip.startDateTimeStamp <= todayTimeStamp && trip.endDateTimeStamp >= todayTimeStamp)
+    if (!presentTrips.length) {
+      return 'You have no present trips scheduled at this time.'
+    }
+      return presentTrips;
+  }
+
 
 
 //present trips
