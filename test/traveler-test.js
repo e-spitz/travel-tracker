@@ -8,12 +8,13 @@ import Destination from '../src/Destination.js';
 
 describe('Traveler', () => {
   let traveler1, traveler2, traveler3;
-  let date = '2020/01/09';
+  let date = '2020/10/29';
 
   beforeEach(() => {
     traveler1 = new Traveler(travelers[0]);
     traveler2 = new Traveler(travelers[10]);
     traveler3 = new Traveler(travelers[49]);
+
 
     // allDestinations = destinations.forEach(dest => new Destination(dest));
     // console.log('a', allDestinations);
@@ -139,4 +140,53 @@ describe('Traveler', () => {
       'tripCost': 16863
     }]);
   });
+
+  it('should be able to find previous trips', () => {
+    traveler2.findTrips(trips, destinations);
+    const previousTrips = traveler2.findPastTrips(date)
+    expect(previousTrips).to.deep.equal([{
+      'id': 42,
+      'userID': 11,
+      'destinationID': 32,
+      'travelers': 1,
+      'date': '2020/08/08',
+      'duration': 14,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1596866400000,
+      'endDateTimeStamp': 1598076000000,
+      'tripCost': 2013
+    }]);
+    
+    date = '2020/12/19';
+    const previousTrips2 = traveler2.findPastTrips(date);
+    expect(previousTrips2.length).to.equal(2);
+    expect(previousTrips2).to.deep.equal([{
+      'id': 42,
+      'userID': 11,
+      'destinationID': 32,
+      'travelers': 1,
+      'date': '2020/08/08',
+      'duration': 14,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1596866400000,
+      'endDateTimeStamp': 1598076000000,
+      'tripCost': 2013
+    }, {
+      'id': 150,
+      'userID': 11,
+      'destinationID': 20,
+      'travelers': 5,
+      'date': '2020/10/29',
+      'duration': 8,
+      'status': 'approved',
+      'suggestedActivities': [],
+      'startDateTimeStamp': 1603951200000,
+      'endDateTimeStamp': 1604646000000,
+      'tripCost': 2902
+    }]);
+  });
+
+
 });

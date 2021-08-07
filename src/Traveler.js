@@ -24,15 +24,17 @@ class Traveler {
 
 //need to sort trips based of time stamps in order to determine past/present/etc
 
-sortTrips() {
-  this.trips.sort((a, b) => {
-    return new Date(a.date) - new Date(b.date);
-  });
-}
+  sortTrips() {
+    this.trips.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
+  }
 
-findPastTrips() {
+  findPastTrips(todayDate) {
+    const todayTimeStamp = new Date(todayDate).getTime();
+    return this.trips.filter(trip => trip.endDateTimeStamp < todayTimeStamp)
+  }
 
-}
 
 
 //present trips
