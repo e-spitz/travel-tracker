@@ -4,13 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+  <title>Travel Tracker</title>
 </head>
 <body>
+  <main>
+    <!-- need to hide this page prior to creating login functionality -->
+    <section class='login-page hidden'id='loginPage'>
+        <h1 class="login-title " id="loginTitle">travel tracker</h1>
+      <section class='login-form' id='loginForm'>
+          <p>please sign in</p>
+          <form class='login-inputs' id='loginInputs'>
+            <label for='username'>username:</label>
+            <input type='text' id='username' autocomplete='off' required>
+            <label for='password'>password:</label>
+            <input type='password' id='password' autocomplete='off' required>
+            <button class='login-btn' id='loginBtn'>wheels up!</button>
+            <p class='login-error hidden' id='loginError'>Oops! There was a problem. Please try again.</p>
+          </form>
+      </section>
+    <!-- need to hide this page prior to creating login functionality -->
+    </main>
+  </section>
   <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
 
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
