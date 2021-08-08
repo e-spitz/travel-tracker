@@ -12,7 +12,7 @@
   <main>
     <!-- need to hide this page prior to creating login functionality -->
     <section class='login-page hidden'id='loginPage'>
-        <h1 class="login-title " id="loginTitle">travel tracker</h1>
+        <h1 class='login-title' id='loginTitle'>travel tracker</h1>
       <section class='login-form' id='loginForm'>
           <p>please sign in</p>
           <form class='login-inputs' id='loginInputs'>
@@ -25,9 +25,29 @@
           </form>
       </section>
     <!-- need to hide this page prior to creating login functionality -->
-    </main>
   </section>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  <section class='main-page' id='mainPage'>
+    <nav>
+      <header class='main-header' id='mainHeader'>
+        <h1>travel tracker</h1>
+      </header>
+      <section class='nav-bar' id='navBar'>
+        <h2 class='greeting-msg' id='greetingMsg'>hey there, user!</h2>
+        <article class='dropdown-section'>
+          <form class='dropdown-form' action='drop-down'>
+            <select class='dropdown-options' id='dropdownOptions'>
+              <option value='reservations'>my trips</option>
+              <option value='book-trip'>book a trip</option>
+              <option value='log-out'>log out</option>
+            </select>
+          </form>
+        </article>
+      </section>
+    </nav>
+  </section>
+
+  </main>
+  <!-- <img src='./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
 
   <script src="bundle.js"></script>
 </body>
