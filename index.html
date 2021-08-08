@@ -10,6 +10,7 @@
 </head>
 <body>
   <main>
+    <!-- LOGIN PAGE -->
     <!-- need to hide this page prior to creating login functionality -->
     <section class='login-page hidden'id='loginPage'>
         <h1 class='login-title' id='loginTitle'>travel tracker</h1>
@@ -24,28 +25,73 @@
             <p class='login-error hidden' id='loginError'>Oops! There was a problem. Please try again.</p>
           </form>
       </section>
-    <!-- need to hide this page prior to creating login functionality -->
   </section>
-  <section class='main-page' id='mainPage'>
-    <nav>
-      <header class='main-header' id='mainHeader'>
-        <h1>travel tracker</h1>
-      </header>
-      <section class='nav-bar' id='navBar'>
-        <h2 class='greeting-msg' id='greetingMsg'>hey there, user!</h2>
-        <article class='dropdown-section'>
-          <form class='dropdown-form' action='drop-down'>
-            <select class='dropdown-options' id='dropdownOptions'>
-              <option value='reservations'>my trips</option>
-              <option value='book-trip'>book a trip</option>
-              <option value='log-out'>log out</option>
-            </select>
-          </form>
-        </article>
-      </section>
-    </nav>
-  </section>
+  <!-- ^^ need to hide this page prior to creating login functionality ^^-->
 
+  <!-- MAIN PAGE need to have hidden as well and can toggle back and forth from login -->
+  <section class='main-page' id='mainPage'>
+    <header class='main-header' id='mainHeader'>
+      <h1>travel tracker</h1>
+    </header>
+    <!-- MAIN PAGE GREETING -->
+    <section class='greeting' id='greeting'>
+      <h2 class='greeting-msg' id='greetingMsg'>hey there, user!</h2>
+    </section>
+    <!-- NAV BUTTONS -->
+    <nav class='nav-buttons' id='navButtons'>
+      <button class='nav-btn' id='pastTripsBtn'>past trips</button>
+      <button class='nav-btn' id='presentTripsBtn'>present trips</button>
+      <button class='nav-btn' id='futureTripsBtn'>future trips</button>
+      <button class='nav-btn' id='pendingTripsBtn'>pending trips</button>
+    </nav>
+    <section class='cost-logout-section' id='costLogoutSection'>
+      <p>annual costs: </p>
+      <p class='total-spent' id='totalSpent'></p>
+      <button class='logout-btn' id='logoutBtn'>log out</button>
+    </section>
+  </section>
+<!-- BOOKING SECTION -->
+  <section class="booking-section">
+      <h3 for="bookingForm" class="booking-top">
+        book your next trip
+      </h3>
+      <form class='booking-form' id="bookingForm">
+        <div class="input">
+          <label for="destinationForm">choose a destination:
+            <select name="destination-choices" id="destinationChoices" required>
+              <option value="0">choose destination</option>
+            </select>
+          </label>
+        </div>
+        <div class="input">
+          <label for="departureDateForm">departure date:
+            <input name="departure-date-input" id="departureDateInput" type="date" min="2016-01-01" max="2025-12-31" required>
+          </label>
+        </div>
+        <div class="input"></div>
+          <label for="durationForm">trip duration:
+            <input name="duration-input" id="durationInput" type="number" min="1" required>
+          </label>
+        </div>
+        <div class="input">
+          <label for="travelersForm">number of travelers:
+            <input name="travelers-input" id="travelersInput" type="number" min="1" required>
+          </label>
+        </div>
+        <div class="booking-btns">
+          <button class="cost-btn" id="costBtn">estimated trip cost</button>
+          <button class="book-btn" id="bookBtn">book your trip</button>
+        </div>
+      </form>
+    </section>
+  <!-- MODAL -->
+  <section class="modal hidden" id="modal">
+  </section>
+<!-- TRIP CARDS -->
+  <section class='trip-cards' id='tripCards'>
+     <h4 class="grid-title" id="gridTitle">trips</h4>
+     <section class="card-grid" id="cardGrid">
+  </section>
   </main>
   <!-- <img src='./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
 
