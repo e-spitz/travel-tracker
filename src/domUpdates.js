@@ -3,7 +3,7 @@ export const domUpdates = {
   displayTravelerName(traveler) {
     const greetingMsg = document.getElementById('greetingMsg');
     const firstName = traveler.name.split(' ')[0];
-    greetingMsg.innerText = `Hey there, ${firstName}!`;
+    greetingMsg.innerText = `Howdy, ${firstName}!`;
   },
 
   displayYearlyTotal(total) {

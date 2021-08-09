@@ -31,13 +31,18 @@
   <!-- MAIN PAGE need to have hidden as well and can toggle back and forth from login -->
   <section class='main-page' id='mainPage'>
     <header class='main-header' id='mainHeader'>
-      <h1>travel tracker</h1>
+      <h1>your travel tracker</h1>
+      <button class='logout-btn' id='logoutBtn'>log out</button>
     </header>
     <!-- MAIN PAGE GREETING -->
     <section class='greeting' id='greeting'>
       <h2 class='greeting-msg' id='greetingMsg'></h2>
     </section>
     <!-- NAV BUTTONS -->
+    <section class='cost-logout-section' id='costLogoutSection'>
+      <h3>total spent this year: </h3>
+      <p class='total-spent' id='totalSpent'></p>
+    </section>
     <nav class='nav-buttons' id='navButtons'>
       <button class='nav-btn' id='past'>past trips</button>
       <button class='nav-btn' id='present'>present trips</button>
@@ -45,16 +50,11 @@
       <button class='nav-btn' id='pending'>pending trips</button>
       <button class='nav-btn' id='all'>all trips</button>
     </nav>
-    <section class='cost-logout-section' id='costLogoutSection'>
-      <h3>total spent this year: </h3>
-      <p class='total-spent' id='totalSpent'></p>
-      <button class='logout-btn' id='logoutBtn'>log out</button>
-    </section>
 
 <!-- BOOKING SECTION -->
   <section class="booking-section" id='bookingSection'>
       <h4 for="bookingForm" class="click-to-book" id='clickToBook'>
-        book your next trip
+        >>  book your next trip  <<
       </h4>
       <form class='booking-form hidden' id="bookingForm">
         <div class="input">

@@ -1,4 +1,14 @@
 // This is an example of using Sass, otherwise plain CSS works too
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Raleway", sans-serif;
+  color: #093d39;
+  vertical-align: baseline;
+  line-height: 1.75;
+}
+
 $primary-background: white;
 
 
@@ -6,22 +16,81 @@ body {
   background: $primary-background;
 }
 
-.nav-buttons {
-  display: flex;
-  justify-content: space-evenly;
+h1 {
+  font-size: 2em;
 }
 
-.nav-btn {
-  font-family: sans-serif;
-  padding: 1% 3%;
-  margin: 0;
+h4 {
+  font-size: 2em;
+  margin-top: 2%;
+  text-align: center;
+  border-bottom: solid 1px black;
+}
+
+h5 {
+  margin-left: 1.5%;
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 1%;
+}
+
+.main-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5%;
+  border-bottom: solid 1px black;
+  padding-bottom: 1.5%;
+}
+
+.greeting-msg {
+  font-size: 4.6em;
+  display: flex;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+.cost-logout-section {
+  margin-top: -9%;
+  float: right;
+  text-align: center;
+  margin-right: 1.5%;
+  border: solid 1px black;
+  padding: .5%;
+  width: 15%;
+}
+
+.logout-btn {
+  width: 10%;
+  padding: 10px;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 1em;
+  font-weight: bolder;
   border-radius: 2%;
-  border: none;
   box-shadow: 1px .5px 3px 0px black;
 }
 
-.nav-btn:hover {
+.nav-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 1%;
+}
+
+.nav-btn {
+  padding: .5% 2%;
+  border-radius: 2%;
+  border: none;
+  box-shadow: 1px .5px 3px 0px black;
+  width: 15%;
+  font-size: 1em;
+}
+
+.nav-btn:hover,
+.logout-btn:hover {
   cursor: pointer;
+  color: purple;
 }
 
 .trip-cards-container {
@@ -31,16 +100,23 @@ body {
   align-items: center;
   gap: 2em;
   margin-top: .5em;
+  width: 100%;
+  height: 100%;
 }
 
 .trip-card {
   border: solid 1px black;
-  font-size: .75em;
+  font-size: 1em;
   border-radius: .5em;
   padding: 1em;
   margin-left: .5em;
   margin-right: .5em;
   box-shadow: .01em .1em .5em black;
+}
+
+.no-trip {
+  font-size: 1em;
+  margin-left: 4%;
 }
 
 .img-wrapper {
