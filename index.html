@@ -46,17 +46,17 @@
       <button class='nav-btn' id='all'>all trips</button>
     </nav>
     <section class='cost-logout-section' id='costLogoutSection'>
-      <p>yearly total: </p>
+      <h3>total spent this year: </h3>
       <p class='total-spent' id='totalSpent'></p>
       <button class='logout-btn' id='logoutBtn'>log out</button>
     </section>
   </section>
 <!-- BOOKING SECTION -->
-  <section class="booking-section">
-      <h3 for="bookingForm" class="booking-top">
+  <section class="booking-section" id='bookingSection'>
+      <h4 for="bookingForm" class="booking-top">
         book your next trip
-      </h3>
-      <form class='booking-form' id="bookingForm">
+      </h4>
+      <form class='booking-form hidden' id="bookingForm">
         <div class="input">
           <label for="destinationForm">choose a destination:
             <select name="destination-choices" id="destinationChoices" required>
@@ -91,7 +91,7 @@
   </section>
 <!-- TRIP CARDS -->
   <section class='trips' id='trips'>
-     <h4 class="trip-cards-header" id="tripCardsHeader"></h4>
+    <h5 class="trip-cards-header" id="tripCardsHeader"></h5>
      <section class='trip-cards-container' id='tripCardsContainer'>
      </section>
   </section>
