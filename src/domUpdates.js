@@ -51,12 +51,18 @@ export const domUpdates = {
     }
   },
 
+  loadBookingDestinations(allDestinations) {
+    const destList = document.getElementById('destinationChoices')
+    let destNames = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination))
+    destNames.forEach(d => {
+      let destSelect = `
+      <option id='${d.id}' value='${d.id}'>${d.destination}</option>`
+      destList.insertAdjacentHTML('beforeend', destSelect)
+    });
+  },
+
   toggleView(element) {
     element.classList.toggle('hidden')
   }
-
-  // loadBookingDestinations() {
-  //   const destList = document.getElementById('destinationChoices')
-  // }
 
 }

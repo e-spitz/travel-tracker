@@ -88,6 +88,7 @@ function renderCards(event) {
 
 function showBookingForm() {
   domUpdates.toggleView(bookForm)
+  domUpdates.loadBookingDestinations(allDestinations)
 }
 
 function logInLogOut() {
