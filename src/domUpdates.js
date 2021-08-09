@@ -13,6 +13,11 @@ export const domUpdates = {
       currency: 'USD'
     })
     totalSpent.innerText = `${formatter.format(total)}`;
-  }
+  },
+  // 
+  // displayTripCards(trips) {
+  //
+  // }
+
 
 }

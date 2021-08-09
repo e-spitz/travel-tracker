@@ -6,11 +6,15 @@ import Trip from './Trip';
 import Traveler from './Traveler';
 import Destination from './Destination';
 
+let navButtons = document.querySelectorAll('.nav-btn')
+let allTripBtn = document.getElementById('allTrips')
 
-let traveler, travelers; // don't know if we need this
+let traveler, travelers;
 let allDestinations, allTrips;
 let date = new Date();
 let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
+
+navButtons.forEach(button => button.addEventListener('click', renderCards))
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -22,8 +26,7 @@ window.addEventListener('load', function() {
     fetchDestinationsData = data[2].destinations;
     // console.log(fetchDestinationsData);
     fetchSingleTravelerData = new Traveler(data[3]);
-    console.log(fetchSingleTravelerData);
-
+    // console.log(fetchSingleTravelerData);
     traveler = fetchSingleTravelerData;
     travelers = fetchTravelersData.map(trav => new Traveler(trav));
     allTrips = fetchTripsData.map(trip => new Trip(trip));
@@ -36,17 +39,32 @@ window.addEventListener('load', function() {
 const renderTraveler = () => {
   traveler.findTrips(allTrips, allDestinations);
   traveler.calculateTotalAmountSpent(date, allDestinations);
-  displayTraveler();
+  displayTravelerInfo();
 }
 
-const displayTraveler = () => {
-  domUpdates.displayTravelerName(traveler)
-  domUpdates.displayYearlyTotal(traveler.amountSpent)
+const displayTravelerInfo = () => {
+  domUpdates.displayTravelerName(traveler);
+  domUpdates.displayYearlyTotal(traveler.amountSpent);
+  //domUpdates.displayTripCards();
 }
 
-
-
-// const displayCost = (total) => {
-//   const totalSpent = document.getElementById('totalSpent');
-//   totalSpent.innerText = `${total}`;
-// }
+function renderCards(event) {
+  let btnID = event.target.id;
+  let showTrips;
+  if (btnID === 'all') {
+    showTrips = traveler.trips;
+  }
+  if (btnID === 'past') {
+    showTrips = traveler.findPastTrips(date);
+  }
+  if (btnID === 'present') {
+    showTrips = traveler.findPresentTrips(date);
+  }
+  if (btnID === 'future') {
+    showTrips = traveler.findUpcomingTrips(date);
+  }
+  if (btnID === 'pending') {
+    showTrips = traveler.findPendingTrips();
+  }
+  // domUpdates.displayTripCards(showTrips)
+}
