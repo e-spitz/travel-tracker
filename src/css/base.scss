@@ -6,6 +6,11 @@ body {
   background: $primary-background;
 }
 
+.click-to-book:hover {
+  cursor: pointer;
+  color: purple;
+}
+
 .hidden {
   display: none;
 }

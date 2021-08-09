@@ -49,6 +49,14 @@ export const domUpdates = {
     } else {
       cardContainer.innerHTML = `<article class='no-trip'>You do not have any matching trips.</article>`
     }
+  },
+
+  toggleView(element) {
+    element.classList.toggle('hidden')
   }
+
+  // loadBookingDestinations() {
+  //   const destList = document.getElementById('destinationChoices')
+  // }
 
 }

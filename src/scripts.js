@@ -8,6 +8,8 @@ import Destination from './Destination';
 
 let navButtons = document.querySelectorAll('.nav-btn')
 let allTripBtn = document.getElementById('allTrips')
+let clickToBook = document.getElementById('clickToBook')
+let bookForm = document.getElementById('bookingForm')
 
 let traveler, travelers;
 let allDestinations, allTrips;
@@ -15,6 +17,7 @@ let date = new Date();
 let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
 
 navButtons.forEach(button => button.addEventListener('click', renderCards))
+clickToBook.addEventListener('click', showBookingForm)
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -59,23 +62,23 @@ function renderCards(event) {
   if (btnID === 'past') {
     cardHeader = 'PAST TRIPS';
     trips = traveler.findPastTrips(date);
-    console.log('pasttrips', trips);
   }
   if (btnID === 'present') {
     cardHeader = 'PRESENT TRIPS';
     trips = traveler.findPresentTrips(date);
-    console.log('presenttrips', trips);
   }
   if (btnID === 'future') {
     cardHeader = 'FUTURE TRIPS';
     trips = traveler.findUpcomingTrips(date);
-    console.log('futuretrips', trips);
   }
   if (btnID === 'pending') {
     cardHeader = 'PENDING TRIPS'
     trips = traveler.findPendingTrips();
-    console.log('pendingtrips', trips);
   }
   domUpdates.displayCardSectionHeader(cardHeader)
   domUpdates.displayTripCards(trips, allDestinations)
+}
+
+function showBookingForm() {
+  domUpdates.toggleView(bookForm)
 }
