@@ -35,27 +35,28 @@
     </header>
     <!-- MAIN PAGE GREETING -->
     <section class='greeting' id='greeting'>
-      <h2 class='greeting-msg' id='greetingMsg'>hey there, user!</h2>
+      <h2 class='greeting-msg' id='greetingMsg'></h2>
     </section>
     <!-- NAV BUTTONS -->
     <nav class='nav-buttons' id='navButtons'>
-      <button class='nav-btn' id='pastTripsBtn'>past trips</button>
-      <button class='nav-btn' id='presentTripsBtn'>present trips</button>
-      <button class='nav-btn' id='futureTripsBtn'>future trips</button>
-      <button class='nav-btn' id='pendingTripsBtn'>pending trips</button>
+      <button class='nav-btn' id='past'>past trips</button>
+      <button class='nav-btn' id='present'>present trips</button>
+      <button class='nav-btn' id='future'>future trips</button>
+      <button class='nav-btn' id='pending'>pending trips</button>
+      <button class='nav-btn' id='all'>all trips</button>
     </nav>
     <section class='cost-logout-section' id='costLogoutSection'>
-      <p>annual costs: </p>
+      <h3>total spent this year: </h3>
       <p class='total-spent' id='totalSpent'></p>
       <button class='logout-btn' id='logoutBtn'>log out</button>
     </section>
   </section>
 <!-- BOOKING SECTION -->
-  <section class="booking-section">
-      <h3 for="bookingForm" class="booking-top">
+  <section class="booking-section" id='bookingSection'>
+      <h4 for="bookingForm" class="booking-top">
         book your next trip
-      </h3>
-      <form class='booking-form' id="bookingForm">
+      </h4>
+      <form class='booking-form hidden' id="bookingForm">
         <div class="input">
           <label for="destinationForm">choose a destination:
             <select name="destination-choices" id="destinationChoices" required>
@@ -89,8 +90,10 @@
   <section class="modal hidden" id="modal">
   </section>
 <!-- TRIP CARDS -->
-  <section class='trip-cards' id='tripCards'>
-     <h4 class="grid-title" id="gridTitle">trips</h4>
+  <section class='trips' id='trips'>
+    <h5 class="trip-cards-header" id="tripCardsHeader"></h5>
+     <section class='trip-cards-container' id='tripCardsContainer'>
+     </section>
   </section>
   </main>
   <!-- <img src='./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
