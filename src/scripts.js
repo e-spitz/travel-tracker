@@ -14,6 +14,7 @@ let loginBtn = document.getElementById('loginBtn')
 let logoutBtn = document.getElementById('logoutBtn')
 let loginPage = document.getElementById('loginPage')
 let mainPage = document.getElementById('mainPage')
+let estimatedTripCostBtn = document.getElementById('costBtn')
 
 
 let traveler, travelers;
@@ -25,6 +26,7 @@ navButtons.forEach(button => button.addEventListener('click', renderCards))
 clickToBook.addEventListener('click', showBookingForm)
 logoutBtn.addEventListener('click', logInLogOut)
 loginBtn.addEventListener('click', logInLogOut)
+costBtn.addEventListener('click', showCost)
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -94,4 +96,8 @@ function showBookingForm() {
 function logInLogOut() {
   domUpdates.toggleView(loginPage)
   domUpdates.toggleView(mainPage)
+}
+
+function showCost() {
+  domUpdates.getFormValues()
 }
