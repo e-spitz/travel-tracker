@@ -89,6 +89,7 @@ function renderCards(event) {
 function showBookingForm() {
   domUpdates.toggleView(bookForm)
   domUpdates.loadBookingDestinations(allDestinations)
+  //is there a way to set the min o the calendar to today's date
 }
 
 function logInLogOut() {
@@ -100,9 +101,14 @@ function showTripCosts(event) {
   event.preventDefault()
   const formTripData = loadFormValues();
   const newTrip = new Trip(formTripData)
-  const tripCost = newTrip.calculateTripCost(allDestinations)
-  const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
-  domUpdates.displayTripCostsModal(tripCost, perPerson)
+  const formFields = checkFormFields(newTrip);
+  if (!formFields) {
+    alert('Please check to make sure all fields are filled out and departure date is today or later.')
+  } else {
+    const tripCost = newTrip.calculateTripCost(allDestinations)
+    const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
+    domUpdates.displayTripCostsModal(tripCost, perPerson)
+  }
 }
 
 function loadFormValues(){
@@ -112,6 +118,7 @@ function loadFormValues(){
   const fixedDate = changeDate.join('/');
   const tripLength = document.getElementById('durationInput').value;
   const numOfTravelers = document.getElementById('travelersInput').value;
+
   let postTripObject = {
     "id": allTrips.length + 1,
     "userID": traveler.id,
@@ -123,4 +130,17 @@ function loadFormValues(){
     "suggestedActivities": []
   }
   return postTripObject;
+}
+
+function checkFormFields(newTrip) {
+  const departureDate = document.getElementById('departureDateInput').value;
+  const changeDate = departureDate.split('-');
+  const fixedDate = changeDate.join('/');
+  const checkDate = new Date(fixedDate).getTime();
+  
+  let filledOut = true;
+  if (!newTrip.destinationID || !newTrip.date || !newTrip.duration || !newTrip.travelers || checkDate < date) {
+    filledOut = false;
+  }
+  return filledOut;
 }
