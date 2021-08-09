@@ -71,7 +71,7 @@ export const domUpdates = {
         <label for='trip-cost'>ESTIMATED TRIP COST:</label>
         <p class='trip-cost'>$${cost}</p>
         <label for='trip-cost-per-person'>COST PER PERSON:</label>
-        <p class='trip-cost-per-person'>${perPerson}</p>
+        <p class='trip-cost-per-person'>$${perPerson}</p>
       </div>
     </article>`;
   },
