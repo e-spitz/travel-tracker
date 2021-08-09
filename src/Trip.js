@@ -31,8 +31,12 @@ class Trip {
   }
 
   calculateCostPerPersonPerTrip(totalCost) {
+    const formatter = new Intl.NumberFormat('en-US', {
+      style:'currency',
+      currency: 'USD'
+    });
     const perPerson = totalCost / this.travelers;
-    return perPerson;
+    return formatter.format(perPerson.toFixed(2));
   }
 
 }

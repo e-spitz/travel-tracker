@@ -26,19 +26,17 @@ navButtons.forEach(button => button.addEventListener('click', renderCards))
 clickToBook.addEventListener('click', showBookingForm)
 logoutBtn.addEventListener('click', logInLogOut)
 loginBtn.addEventListener('click', logInLogOut)
-costBtn.addEventListener('click', showCost)
+estimatedTripCostBtn.addEventListener('click', function() {
+  showTripCosts(event)
+});
 
 window.addEventListener('load', function() {
   fetchAll()
   .then(data => {
     fetchTravelersData = data[0].travelers;
-    // console.log(fetchTravelersData);
     fetchTripsData = data[1].trips;
-    // console.log(fetchTripsData);
     fetchDestinationsData = data[2].destinations;
-    // console.log(fetchDestinationsData);
     fetchSingleTravelerData = new Traveler(data[3]);
-    // console.log(fetchSingleTravelerData);
     traveler = fetchSingleTravelerData;
     travelers = fetchTravelersData.map(trav => new Traveler(trav));
     allTrips = fetchTripsData.map(trip => new Trip(trip));
@@ -98,8 +96,13 @@ function logInLogOut() {
   domUpdates.toggleView(mainPage)
 }
 
-function showCost() {
-  loadFormValues()
+function showTripCosts(event) {
+  event.preventDefault()
+  const formTripData = loadFormValues();
+  const newTrip = new Trip(formTripData)
+  const tripCost = newTrip.calculateTripCost(allDestinations)
+  const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
+  domUpdates.displayTripCostsModal(tripCost, perPerson)
 }
 
 function loadFormValues(){
