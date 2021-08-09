@@ -56,16 +56,25 @@ export const domUpdates = {
     let destNames = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination))
     destNames.forEach(d => {
       let destSelect = `
-      <option id='${d.id}' value='${d.destination}'>${d.destination}</option>`
+      <option value='${d.id}' required>${d.destination}</option>`
       destList.insertAdjacentHTML('beforeend', destSelect)
     });
   },
 
-  getFormValues(){
-    const destination = document.getElementById('destinationChoices').value;
-    console.log(destination);
-
- },
+ //  loadFormValues(){
+ //    const destination = document.getElementById('destinationChoices').value; //sting of location
+ //    const date = document.getElementById('departureDateInput').value; //date logs as 2021-08-18
+ //    const tripLength = document.getElementById('durationInput').value; //number
+ //    const numOfTravelers = document.getElementById('travelersInput').value; //number
+ //    const newBookingObj = {
+ //      location: destination,
+ //      departureDate: date,
+ //      tripDuration: tripLength,
+ //      travelersCount: numOfTravelers
+ //    }
+ //    console.log(newBookingObj);
+ //    return newBookingObj;
+ // },
 
   toggleView(element) {
     element.classList.toggle('hidden')

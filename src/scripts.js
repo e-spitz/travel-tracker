@@ -99,5 +99,25 @@ function logInLogOut() {
 }
 
 function showCost() {
-  domUpdates.getFormValues()
+  loadFormValues()
+}
+
+function loadFormValues(){
+  const destinationID = document.getElementById('destinationChoices').value;
+  const departureDate = document.getElementById('departureDateInput').value;
+  const changeDate = departureDate.split('-');
+  const fixedDate = changeDate.join('/');
+  const tripLength = document.getElementById('durationInput').value;
+  const numOfTravelers = document.getElementById('travelersInput').value;
+  let postTripObject = {
+    "id": allTrips.length + 1,
+    "userID": traveler.id,
+    "destinationID": parseInt(destinationID),
+    "travelers": parseInt(numOfTravelers),
+    "date": fixedDate,
+    "duration": parseInt(tripLength),
+    "status": "pending",
+    "suggestedActivities": []
+  }
+  return postTripObject;
 }
