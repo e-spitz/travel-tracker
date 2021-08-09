@@ -71,9 +71,9 @@ class Traveler {
       }
       return sum;
     }, 0)
-    // if (!this.amountSpent) {
-    //   return 'Doh! It looks like you didn\'t travel this year.';
-    // }
+    if (!this.amountSpent) {
+      return 'Doh! It looks like you didn\'t travel this year.';
+    }
   }
 
 }

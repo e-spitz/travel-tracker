@@ -14,7 +14,7 @@ let allDestinations, allTrips;
 let date = new Date();
 let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
 
-navButtons.forEach(button => button.addEventListener('click', renderCards))
+// navButtons.forEach(button => button.addEventListener('click', renderCards))
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -32,6 +32,7 @@ window.addEventListener('load', function() {
     allTrips = fetchTripsData.map(trip => new Trip(trip));
     allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
     renderTraveler()
+    // displayTravelerInfo()
   })
   .catch(err => displayError(err))
 })
@@ -39,32 +40,14 @@ window.addEventListener('load', function() {
 const renderTraveler = () => {
   traveler.findTrips(allTrips, allDestinations);
   traveler.calculateTotalAmountSpent(date, allDestinations);
-  displayTravelerInfo();
+  displayTravelerInfo(traveler);
 }
 
-const displayTravelerInfo = () => {
+const displayTravelerInfo = (traveler) => {
   domUpdates.displayTravelerName(traveler);
   domUpdates.displayYearlyTotal(traveler.amountSpent);
-  //domUpdates.displayTripCards();
-}
-
-function renderCards(event) {
-  let btnID = event.target.id;
-  let showTrips;
-  if (btnID === 'all') {
-    showTrips = traveler.trips;
-  }
-  if (btnID === 'past') {
-    showTrips = traveler.findPastTrips(date);
-  }
-  if (btnID === 'present') {
-    showTrips = traveler.findPresentTrips(date);
-  }
-  if (btnID === 'future') {
-    showTrips = traveler.findUpcomingTrips(date);
-  }
-  if (btnID === 'pending') {
-    showTrips = traveler.findPendingTrips();
-  }
-  // domUpdates.displayTripCards(showTrips)
+  domUpdates.displayCardSectionHeader('all trips');
+  console.log(traveler.trips);
+  console.log(allDestinations);
+  domUpdates.displayTripCards(traveler.trips, allDestinations);
 }
