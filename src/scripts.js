@@ -89,7 +89,6 @@ function renderCards(event) {
 function showBookingForm() {
   domUpdates.toggleView(bookForm)
   domUpdates.loadBookingDestinations(allDestinations)
-  //is there a way to set the min o the calendar to today's date
 }
 
 function logInLogOut() {
@@ -137,7 +136,7 @@ function checkFormFields(newTrip) {
   const changeDate = departureDate.split('-');
   const fixedDate = changeDate.join('/');
   const checkDate = new Date(fixedDate).getTime();
-  
+
   let filledOut = true;
   if (!newTrip.destinationID || !newTrip.date || !newTrip.duration || !newTrip.travelers || checkDate < date) {
     filledOut = false;
