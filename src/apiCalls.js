@@ -4,12 +4,18 @@ const fetchAPIData = (type) => {
     .catch(err => displayError(err))
 }
 
+const fetchSingleTraveler = (id) => {
+  return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
+    .then(response => response.json())
+    .catch(err => displayError(err))
+}
+
 const fetchAll = () => {
   return Promise.all([
-    fetchAPIData('travelers/16'),
     fetchAPIData('travelers'),
     fetchAPIData('trips'),
     fetchAPIData('destinations'),
+    fetchSingleTraveler('46')
   ])
   .catch(err => displayError(err))
 }

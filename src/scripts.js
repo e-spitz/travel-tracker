@@ -1,9 +1,12 @@
 import './css/base.scss';
 // import './css/styles.scss';
 import { fetchAll } from './apiCalls';
+import { domUpdates } from './domUpdates';
 import Trip from './Trip';
 import Traveler from './Traveler';
 import Destination from './Destination';
+
+let greetingMsg = document.getElementById('greetingMsg')
 
 let traveler, travelers; // don't know if we need this
 let allDestinations, allTrips;
@@ -14,14 +17,14 @@ let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinatio
 window.addEventListener('load', function() {
   fetchAll()
   .then(data => {
-    fetchSingleTravelerData = data[0];
-    // console.log(fetchSingleTravelerData)
-    fetchTravelersData = data[1].travelers;
+    fetchTravelersData = data[0].travelers;
     // console.log(fetchTravelersData);
-    fetchTripsData = data[2].trips;
+    fetchTripsData = data[1].trips;
     // console.log(fetchTripsData);
-    fetchDestinationsData = data[3].destinations;
+    fetchDestinationsData = data[2].destinations;
     // console.log(fetchDestinationsData);
+    fetchSingleTravelerData = new Traveler(data[3]);
+    // console.log(fetchSingleTravelerData);
 
     traveler = fetchSingleTravelerData;
     travelers = fetchTravelersData.map(trav => new Traveler(trav));
@@ -29,5 +32,6 @@ window.addEventListener('load', function() {
     allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
     // console.log(traveler, travelers, allTrips, allDestinations);
   })
+  .then(data => domUpdates.displayTravelerName(traveler))
   .catch(err => displayError(err))
 })
