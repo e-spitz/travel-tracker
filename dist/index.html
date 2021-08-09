@@ -50,23 +50,23 @@
       <p class='total-spent' id='totalSpent'></p>
       <button class='logout-btn' id='logoutBtn'>log out</button>
     </section>
-  </section>
+
 <!-- BOOKING SECTION -->
   <section class="booking-section" id='bookingSection'>
-      <h4 for="bookingForm" class="booking-top">
+      <h4 for="bookingForm" class="click-to-book" id='clickToBook'>
         book your next trip
       </h4>
       <form class='booking-form hidden' id="bookingForm">
         <div class="input">
           <label for="destinationForm">choose a destination:
             <select name="destination-choices" id="destinationChoices" required>
-              <option value="0">choose destination</option>
+              <option value="0" required>choose destination</option>
             </select>
           </label>
         </div>
         <div class="input">
           <label for="departureDateForm">departure date:
-            <input name="departure-date-input" id="departureDateInput" type="date" min="2016-01-01" max="2025-12-31" required>
+            <input name="departure-date-input" id="departureDateInput" type="date" max="2025-12-31" required>
           </label>
         </div>
         <div class="input"></div>
@@ -87,13 +87,16 @@
       <p class='booking-error' id='bookingError'></p>
     </section>
   <!-- MODAL -->
-  <section class="modal hidden" id="modal">
-  </section>
+    <section class="cost-modal hidden" id="costModal">
+      <article class="modal-content" id='modalContent'>
+      </article>
+    </section>
 <!-- TRIP CARDS -->
-  <section class='trips' id='trips'>
-    <h5 class="trip-cards-header" id="tripCardsHeader"></h5>
-     <section class='trip-cards-container' id='tripCardsContainer'>
-     </section>
+    <section class='trips' id='trips'>
+      <h5 class="trip-cards-header" id="tripCardsHeader"></h5>
+       <section class='trip-cards-container' id='tripCardsContainer'>
+       </section>
+    </section>
   </section>
   </main>
   <!-- <img src='./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->

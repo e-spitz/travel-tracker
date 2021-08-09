@@ -6,6 +6,37 @@ body {
   background: $primary-background;
 }
 
+.click-to-book:hover {
+  cursor: pointer;
+  color: purple;
+}
+
+.cost-modal {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+}
+
+.modal-content {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 50%;
+  height: 35%;
+  overflow-y: scroll;
+  box-shadow: 0px 7px 29px 0px black;
+}
+
 .hidden {
   display: none;
 }

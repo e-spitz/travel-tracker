@@ -39,9 +39,9 @@ export const domUpdates = {
               <h3 class="destination-name">${destination.destination}</h3>
               <img class="trip-img" src=${destination.image} alt=${destination.alt}>
             </div>
-            <p>trip date: ${updateDate}</p>
+            <p>departure date: ${updateDate}</p>
             <p>travelers: ${trip.travelers}</p>
-            <p>duration: ${trip.duration}</p>
+            <p>duration: ${trip.duration} days</p>
             <p>status: ${trip.status}</p>
           </article>`;
           cardContainer.insertAdjacentHTML('beforeend', cardInfo);
@@ -49,6 +49,35 @@ export const domUpdates = {
     } else {
       cardContainer.innerHTML = `<article class='no-trip'>You do not have any matching trips.</article>`
     }
+  },
+
+  loadBookingDestinations(allDestinations) {
+    const destList = document.getElementById('destinationChoices')
+    let destNames = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination))
+    destNames.forEach(d => {
+      let destSelect = `
+      <option value='${d.id}' required>${d.destination}</option>`
+      destList.insertAdjacentHTML('beforeend', destSelect)
+    });
+  },
+
+  displayTripCostsModal(cost, perPerson) {
+    const costModal = document.getElementById('costModal')
+    costModal.classList.remove('hidden');
+    costModal.innerHTML = `
+    <article class="modal-content" id='modalContent'>
+    <span class="close-modal" id="closeModal">&times;</span>
+      <div class='trip-costs' id='tripCosts'>
+        <label for='trip-cost'>ESTIMATED TRIP COST:</label>
+        <p class='trip-cost'>$${cost}</p>
+        <label for='trip-cost-per-person'>COST PER PERSON:</label>
+        <p class='trip-cost-per-person'>${perPerson}</p>
+      </div>
+    </article>`;
+  },
+
+  toggleView(element) {
+    element.classList.toggle('hidden')
   }
 
 }
