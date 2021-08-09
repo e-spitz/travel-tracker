@@ -10,6 +10,11 @@ let navButtons = document.querySelectorAll('.nav-btn')
 let allTripBtn = document.getElementById('allTrips')
 let clickToBook = document.getElementById('clickToBook')
 let bookForm = document.getElementById('bookingForm')
+let loginBtn = document.getElementById('loginBtn')
+let logoutBtn = document.getElementById('logoutBtn')
+let loginPage = document.getElementById('loginPage')
+let mainPage = document.getElementById('mainPage')
+
 
 let traveler, travelers;
 let allDestinations, allTrips;
@@ -18,6 +23,8 @@ let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinatio
 
 navButtons.forEach(button => button.addEventListener('click', renderCards))
 clickToBook.addEventListener('click', showBookingForm)
+logoutBtn.addEventListener('click', logInLogOut)
+loginBtn.addEventListener('click', logInLogOut)
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -81,4 +88,9 @@ function renderCards(event) {
 
 function showBookingForm() {
   domUpdates.toggleView(bookForm)
+}
+
+function logInLogOut() {
+  domUpdates.toggleView(loginPage)
+  domUpdates.toggleView(mainPage)
 }
