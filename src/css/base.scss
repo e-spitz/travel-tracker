@@ -6,6 +6,36 @@ body {
   background: $primary-background;
 }
 
+.trip-cards-container {
+  display: grid;
+  padding: .5em;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 2em;
+  margin-top: .5em;
+}
+
+.trip-card {
+  border: solid 1px black;
+  font-size: .75em;
+  border-radius: .5em;
+  padding: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+  box-shadow: .01em .1em .5em black;
+}
+
+.img-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.trip-img {
+  height: 8%;
+  width: 100%;
+  border-radius: 5%;
+}
+
 .click-to-book:hover {
   cursor: pointer;
   color: purple;
@@ -36,6 +66,19 @@ body {
   overflow-y: scroll;
   box-shadow: 0px 7px 29px 0px black;
 }
+
+// .close-modal {
+//   color: lightblue;
+//   float: right;
+//   font-size: 3em;
+//   font-weight: bold;
+//   transition: transform 400ms;
+//
+
+// .close-modal:hover {
+//   cursor: pointer;
+//   transform: scale(1.5, 1.5);
+// }
 
 .hidden {
   display: none;
