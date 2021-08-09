@@ -40,14 +40,39 @@ window.addEventListener('load', function() {
 const renderTraveler = () => {
   traveler.findTrips(allTrips, allDestinations);
   traveler.calculateTotalAmountSpent(date, allDestinations);
-  displayTravelerInfo(traveler);
+  displayTravelerInfo();
 }
 
-const displayTravelerInfo = (traveler) => {
+const displayTravelerInfo = () => {
   domUpdates.displayTravelerName(traveler);
   domUpdates.displayYearlyTotal(traveler.amountSpent);
   domUpdates.displayCardSectionHeader('all trips');
-  console.log(traveler.trips);
-  console.log(allDestinations);
   domUpdates.displayTripCards(traveler.trips, allDestinations);
 }
+
+// function renderCards(event) {
+//   let btnID = event.target.id;
+//   let trips, cardHeader;
+//   if (btnID === 'all') {
+//     trips = traveler.trips;
+//     cardHeader = 'all trips';
+//   }
+//   if (btnID === 'past') {
+//     trips = traveler.findPastTrips(date);
+//     cardHeader = 'past trips';
+//   }
+//   if (btnID === 'present') {
+//     trips = traveler.findPresentTrips(date);
+//     cardHeader = 'present trips';
+//   }
+//   if (btnID === 'future') {
+//     trips = traveler.findUpcomingTrips(date);
+//     cardHeader = 'future trips';
+//   }
+//   if (btnID === 'pending') {
+//     trips = traveler.findPendingTrips();
+//     cardHeader = 'pending trips'
+//   }
+//   domUpdates.displayCardSectionHeader(cardHeader)
+//   domUpdates.displayTripCards(trips, allDestinations)
+// }
