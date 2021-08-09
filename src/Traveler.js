@@ -10,6 +10,12 @@ class Traveler {
     this.amountSpent = 0;
   }
 
+  sortTrips() {
+    this.trips.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
+  }
+
   findTrips(tripsData, destinationsData) {
     tripsData.forEach(trip => {
       if (trip.userID === this.id) {
@@ -19,12 +25,6 @@ class Traveler {
     this.trips.forEach(trip => trip.getTripTimeStamps());
     this.trips.forEach(trip => trip.calculateTripCost(destinationsData));
     this.sortTrips();
-  }
-
-  sortTrips() {
-    this.trips.sort((a, b) => {
-      return new Date(a.date) - new Date(b.date);
-    });
   }
 
   findPastTrips(todayDate) {
@@ -63,7 +63,7 @@ class Traveler {
   }
 
   calculateTotalAmountSpent(todayDate, destinationsData) {
-    const currentYear = todayDate.split('/')[0];
+    const currentYear = todayDate.toString().split(' ')[3];
     this.amountSpent = this.trips.reduce((sum, trip) => {
       let tripYear = trip.date.split('/')[0];
       if (tripYear === currentYear) {
@@ -71,9 +71,9 @@ class Traveler {
       }
       return sum;
     }, 0)
-    if (!this.amountSpent) {
-      return 'Doh! It looks like you didn\'t travel this year.';
-    }
+    // if (!this.amountSpent) {
+    //   return 'Doh! It looks like you didn\'t travel this year.';
+    // }
   }
 
 }

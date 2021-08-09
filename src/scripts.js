@@ -6,12 +6,10 @@ import Trip from './Trip';
 import Traveler from './Traveler';
 import Destination from './Destination';
 
-let greetingMsg = document.getElementById('greetingMsg')
 
 let traveler, travelers; // don't know if we need this
 let allDestinations, allTrips;
-let date = Date.now()
-// console.log(date);
+let date = new Date();
 let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
 
 window.addEventListener('load', function() {
@@ -24,14 +22,31 @@ window.addEventListener('load', function() {
     fetchDestinationsData = data[2].destinations;
     // console.log(fetchDestinationsData);
     fetchSingleTravelerData = new Traveler(data[3]);
-    // console.log(fetchSingleTravelerData);
+    console.log(fetchSingleTravelerData);
 
     traveler = fetchSingleTravelerData;
     travelers = fetchTravelersData.map(trav => new Traveler(trav));
     allTrips = fetchTripsData.map(trip => new Trip(trip));
     allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
-    // console.log(traveler, travelers, allTrips, allDestinations);
+    renderTraveler()
   })
-  .then(data => domUpdates.displayTravelerName(traveler))
   .catch(err => displayError(err))
 })
+
+const renderTraveler = () => {
+  traveler.findTrips(allTrips, allDestinations);
+  traveler.calculateTotalAmountSpent(date, allDestinations);
+  displayTraveler();
+}
+
+const displayTraveler = () => {
+  domUpdates.displayTravelerName(traveler)
+  domUpdates.displayYearlyTotal(traveler.amountSpent)
+}
+
+
+
+// const displayCost = (total) => {
+//   const totalSpent = document.getElementById('totalSpent');
+//   totalSpent.innerText = `${total}`;
+// }
