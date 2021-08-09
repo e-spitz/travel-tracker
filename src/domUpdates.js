@@ -12,7 +12,11 @@ export const domUpdates = {
       style:'currency',
       currency: 'USD'
     })
-    totalSpent.innerText = `${formatter.format(total)}`;
+    if (total !== 0) {
+      totalSpent.innerText = `${formatter.format(total)}`;
+    } else {
+      totalSpent.innerText = 'None! Time to book a trip.';
+    }
   },
 
   displayCardSectionHeader(header) {
@@ -27,8 +31,8 @@ export const domUpdates = {
     if (travelerTrips.length > 0) {
       travelerTrips.forEach(trip => {
         let destination = allDestinations.find(dest => dest.id === trip.destinationID)
-        let splitDate = trip.date.split('/')
-        let updateDate = `${splitDate[2]}/${splitDate[2]}/${splitDate[0]}`;
+        let splitDate = trip.date.split('/');
+        let updateDate = `${splitDate[1]}/${splitDate[2]}/${splitDate[0]}`;
         let cardInfo = `
           <article class="trip-card">
             <div class="img-wrapper">
@@ -40,11 +44,11 @@ export const domUpdates = {
             <p>duration: ${trip.duration}</p>
             <p>status: ${trip.status}</p>
           </article>`;
-          cardContainer.insertAdjacentHTML('beforeend', cardInfo)
+          cardContainer.insertAdjacentHTML('beforeend', cardInfo);
         });
-      } else {
-        cardContainer.innerHTML = `<article class='no-trip'>You do not have any matching trips!</article>`
-      }
+    } else {
+      cardContainer.innerHTML = `<article class='no-trip'>You do not have any matching trips.</article>`
     }
+  }
 
 }

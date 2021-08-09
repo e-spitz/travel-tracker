@@ -15,7 +15,7 @@ const fetchAll = () => {
     fetchAPIData('travelers'),
     fetchAPIData('trips'),
     fetchAPIData('destinations'),
-    fetchSingleTraveler('46')
+    fetchSingleTraveler('25')
   ])
   .catch(err => displayError(err))
 }
@@ -25,6 +25,6 @@ const displayError = (errMsg) => {
     const msg = errMsg.message === 'Failed to fetch' ?
       "Internet connection may be unstable. Please try again later." : errMsg;
     bookingError.innerText = `Something went wrong, please try again later.`;
-}
+} 
 
 export { fetchAll }

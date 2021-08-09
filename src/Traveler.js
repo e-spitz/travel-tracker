@@ -30,35 +30,35 @@ class Traveler {
   findPastTrips(todayDate) {
     const todayTimeStamp = new Date(todayDate).getTime();
     const pastTrips = this.trips.filter(trip => trip.endDateTimeStamp < todayTimeStamp);
-    if (!pastTrips.length) {
-      return 'You haven\'t been travelin\' much...';
-    }
+    // if (!pastTrips.length) {
+    //   return 'You haven\'t been travelin\' much...';
+    // }
       return pastTrips;
   }
 
   findPresentTrips(todayDate) {
     const todayTimeStamp = new Date(todayDate).getTime();
     const presentTrips = this.trips.filter(trip => trip.startDateTimeStamp <= todayTimeStamp && trip.endDateTimeStamp >= todayTimeStamp);
-    if (!presentTrips.length) {
-      return 'You are not currently on a trip. Bummer!';
-    }
+    // if (!presentTrips.length) {
+    //   return 'You are not currently on a trip. Bummer!';
+    // }
       return presentTrips;
   }
 
   findUpcomingTrips(todayDate) {
     const todayTimeStamp = new Date(todayDate).getTime();
     const upcomingTrips = this.trips.filter(trip => trip.startDateTimeStamp > todayTimeStamp)
-    if (!upcomingTrips.length) {
-      return 'You have no future trips scheduled. Time for a vacation!';
-    }
+    // if (!upcomingTrips.length) {
+    //   return 'You have no future trips scheduled. Time for a vacation!';
+    // }
       return upcomingTrips;
   }
 
   findPendingTrips() {
     const pendingTrips = this.trips.filter(trip => trip.status === 'pending');
-    if (!pendingTrips.length) {
-      return 'You have no trips to be approved at this time.';
-    }
+    // if (!pendingTrips.length) {
+    //   return 'You have no trips to be approved at this time.';
+    // }
     return pendingTrips;
   }
 
