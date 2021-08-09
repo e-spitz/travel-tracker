@@ -1,41 +1,33 @@
 import './css/base.scss';
 // import './css/styles.scss';
-import { fetchAPIData } from './apiCalls';
+import { fetchAll } from './apiCalls';
 import Trip from './Trip';
 import Traveler from './Traveler';
 import Destination from './Destination';
 
-let traveler;
-let travelers; // don't know if we need this
-let allDestinations;
-let allTrips;
-let date;
+let traveler, travelers; // don't know if we need this
+let allDestinations, allTrips;
+let date = Date.now()
+// console.log(date);
+let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
 
-window.addEventListener('load', () => {
-  start();
-});
+window.addEventListener('load', function() {
+  fetchAll()
+  .then(data => {
+    fetchSingleTravelerData = data[0];
+    // console.log(fetchSingleTravelerData)
+    fetchTravelersData = data[1].travelers;
+    // console.log(fetchTravelersData);
+    fetchTripsData = data[2].trips;
+    // console.log(fetchTripsData);
+    fetchDestinationsData = data[3].destinations;
+    // console.log(fetchDestinationsData);
 
-const start = () => {
-  setUpTrips();
-  setUpDestinations();
-  setUpTraveler();
-}
-
-const setUpTrips = () => {
-  fetchAPIData('trips')
-  .then(data => allTrips = data.trips)
-  .then(data => console.log('allTrips', allTrips)) // single traveler trips instantiated in Traveler class
-}
-
-const setUpDestinations = () => {
-  fetchAPIData('destinations')
-  .then(data => allDestinations = data.destinations)
-  .then(data => console.log('allDestinations', allDestinations)) //don't think we need to instantiate here bc all properties are accessible through dot notation
-}
-
-const setUpTraveler = () => {
-  fetchAPIData('travelers')
-  .then(data => travelers = data.travelers.map(trav => new Traveler(trav)))
-  .then(data => traveler = travelers[Math.floor(Math.random() * travelers.length)])
-  .then(data => console.log('single traveler', traveler, 'allTravelers', travelers))
-}
+    traveler = fetchSingleTravelerData;
+    travelers = fetchTravelersData.map(trav => new Traveler(trav));
+    allTrips = fetchTripsData.map(trip => new Trip(trip));
+    allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
+    // console.log(traveler, travelers, allTrips, allDestinations);
+  })
+  .catch(err => displayError(err))
+})
