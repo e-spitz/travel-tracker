@@ -15,13 +15,13 @@ const fetchAll = () => {
     fetchAPIData('travelers'),
     fetchAPIData('trips'),
     fetchAPIData('destinations'),
-    fetchSingleTraveler('39')
+    fetchSingleTraveler('16')
   ])
   .catch(err => displayError(err))
 }
 
 const postNewTrip = (newTrip) => {
-  return fetch('http://localhost:3001/ai/v1/trips', {
+  return fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
     body: JSON.stringify(newTrip),
     headers: {

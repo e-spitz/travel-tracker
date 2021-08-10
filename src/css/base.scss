@@ -135,7 +135,7 @@ h5 {
   color: purple;
 }
 
-.cost-modal
+.cost-modal,
 .book-modal {
   display: flex;
   align-items: center;
@@ -161,6 +161,7 @@ h5 {
   height: 30%;
   overflow-y: scroll;
   box-shadow: 0px 7px 29px 0px black;
+  justify-content: center;
 }
 
 .trip-costs {
