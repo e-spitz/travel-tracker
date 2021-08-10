@@ -16,10 +16,6 @@ body {
   background: $primary-background;
 }
 
-h1 {
-  font-size: 2em;
-}
-
 h4 {
   font-size: 2em;
   margin-top: 2%;
@@ -37,9 +33,28 @@ h5 {
 .main-header {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1.5%;
   border-bottom: solid 1px black;
-  padding-bottom: 1.5%;
+  margin-top: .5%;
+    h1 {
+      font-size: 2em;
+      margin-right: 1.5%;
+    }
+
+    .fas {
+      font-size: 1.2em;
+      letter-spacing: .2em;
+    }
+
+    .logout-btn {
+      margin-top: -.5%;
+      width: 4%;
+      height: 50%;
+      border: solid 1px black;
+      text-align: center;
+      border-radius: 2%;
+      font-size: .8em;
+      box-shadow: .5px .5px 5px 0px black;
+    }
 }
 
 .greeting-msg {
@@ -59,17 +74,6 @@ h5 {
   width: 15%;
 }
 
-.logout-btn {
-  width: 10%;
-  padding: 10px;
-  margin-left: 2%;
-  margin-right: 2%;
-  font-size: 1em;
-  font-weight: bolder;
-  border-radius: 2%;
-  box-shadow: 1px .5px 3px 0px black;
-}
-
 .nav-buttons {
   display: flex;
   justify-content: space-evenly;
@@ -87,10 +91,13 @@ h5 {
   font-size: 1em;
 }
 
+.login-btn:hover,
 .nav-btn:hover,
 .logout-btn:hover {
   cursor: pointer;
   color: purple;
+  transform: translateY(-2px);
+  transition: .4s;
 }
 
 .trip-cards-container {
@@ -133,6 +140,10 @@ h5 {
 .click-to-book:hover {
   cursor: pointer;
   color: purple;
+  transition-property: all;
+  transition-duration: .4s;
+  transition-timing-function: ease-in-out;
+  letter-spacing: 5px;
 }
 
 .cost-modal,

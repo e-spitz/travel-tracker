@@ -42,20 +42,25 @@ closeBookModal.addEventListener('click', function() {
 })
 
 window.addEventListener('load', function() {
-  fetchAll()
-  .then(data => {
-    fetchTravelersData = data[0].travelers;
-    fetchTripsData = data[1].trips;
-    fetchDestinationsData = data[2].destinations;
-    fetchSingleTravelerData = new Traveler(data[3]);
-    traveler = fetchSingleTravelerData;
-    travelers = fetchTravelersData.map(trav => new Traveler(trav));
-    allTrips = fetchTripsData.map(trip => new Trip(trip));
-    allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
-    renderTraveler()
-  })
-  .catch(err => displayError(err))
+  getAllData();
 })
+
+
+const getAllData = () => {
+  fetchAll()
+    .then(data => {
+      fetchTravelersData = data[0].travelers;
+      fetchTripsData = data[1].trips;
+      fetchDestinationsData = data[2].destinations;
+      fetchSingleTravelerData = new Traveler(data[3]);
+      traveler = fetchSingleTravelerData;
+      travelers = fetchTravelersData.map(trav => new Traveler(trav));
+      allTrips = fetchTripsData.map(trip => new Trip(trip));
+      allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
+      renderTraveler()
+    })
+    .catch(err => displayError(err))
+}
 
 const renderTraveler = () => {
   traveler.findTrips(allTrips, allDestinations);
@@ -171,7 +176,10 @@ function bookNewTrip(event) {
     alert('Please check to make sure all fields are filled out and departure date is today or later.')
   } else {
     postNewTrip(newTrip)
-    domUpdates.displayBookingModal(newTrip, allDestinations)
+      .then(function() {
+        getAllData();
+        domUpdates.displayBookingModal(newTrip, allDestinations);
+      })
   }
 }
 
