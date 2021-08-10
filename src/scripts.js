@@ -27,7 +27,9 @@ let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinatio
 navButtons.forEach(button => button.addEventListener('click', renderCards))
 clickToBook.addEventListener('click', showBookingForm)
 logoutBtn.addEventListener('click', logInLogOut)
-loginBtn.addEventListener('click', logInLogOut)
+loginBtn.addEventListener('click', function() {
+  validateLogin(event);
+})
 estimatedTripCostBtn.addEventListener('click', function() {
   showTripCosts(event)
 });
@@ -45,6 +47,20 @@ window.addEventListener('load', function() {
   getAllData();
 })
 
+function validateLogin(event) {
+  const usernameInput = document.getElementById('username').value;
+  const travelerID = usernameInput.split('traveler')[1]
+  const passwordInput = document.getElementById('password').value;
+  event.preventDefault();
+  if (usernameInput !== '' && passwordInput !== '' && usernameInput.includes('traveler') && passwordInput === 'travel2020') {
+    const loginInputs = document.getElementById('loginInputs')
+    loginInputs.reset();
+    logInLogOut();
+  } else {
+    alert('WHOA')
+  }
+  console.log(travelerID, passwordInput);
+}
 
 const getAllData = () => {
   fetchAll()
