@@ -81,6 +81,19 @@ export const domUpdates = {
       this.toggleView(costModal)
   },
 
+  displayBookingModal(newTrip) {
+    const bookModal = document.getElementById('bookModal')
+    bookModal.classList.remove('hidden');
+    bookModal.innerHTML = `
+    <article class="book-modal-content" id='bookModalContent'>
+    <span class="book-close-modal" id="bookCloseModal">&times;</span>
+      <div>
+        <label for='booking-msg'>YOU JUST BOOKED A VACATION TO:</label>
+        <p class='booking-msg'>${newTrip.id} - A TEST</p>
+      </div>
+    </article>`;
+  },
+
   toggleView(element) {
     element.classList.toggle('hidden')
   }

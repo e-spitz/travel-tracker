@@ -20,6 +20,18 @@ const fetchAll = () => {
   .catch(err => displayError(err))
 }
 
+const postNewTrip = (newTrip) => {
+  return fetch('http://localhost:3001/ai/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(newTrip),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .catch(err => displayError(err))
+}
+
 const displayError = (errMsg) => {
     const bookingError =  document.getElementById('bookingError');
     const msg = errMsg.message === 'Failed to fetch' ?
@@ -27,4 +39,4 @@ const displayError = (errMsg) => {
     bookingError.innerText = `Something went wrong, please try again later.`;
 }
 
-export { fetchAll }
+export { fetchAll, postNewTrip }
