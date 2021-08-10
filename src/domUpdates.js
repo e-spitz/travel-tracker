@@ -11,7 +11,7 @@ export const domUpdates = {
     const formatter = new Intl.NumberFormat('en-US', {
       style:'currency',
       currency: 'USD'
-    })
+    });
     if (total !== 0) {
       totalSpent.innerText = `${formatter.format(total)}`;
     } else {
@@ -63,7 +63,7 @@ export const domUpdates = {
 
   displayTripCostsModal(cost, perPerson) {
     const costModal = document.getElementById('costModal')
-    costModal.classList.remove('hidden');
+    this.toggleView(costModal);
     costModal.innerHTML = `
     <article class="modal-content" id='modalContent'>
     <span class="close-modal" id="closeModal">&times;</span>
@@ -79,6 +79,42 @@ export const domUpdates = {
   hideModal() {
       const costModal = document.getElementById('costModal')
       this.toggleView(costModal)
+  },
+
+  hideBookingModal() {
+    const bookModal = document.getElementById('bookModal')
+    const bookingForm = document.getElementById('bookingForm')
+    this.clearFormFields();
+    this.toggleView(bookModal);
+    this.toggleView(bookingForm);
+  },
+
+  displayBookingModal(newTrip, allDestinations) {
+    const dest = this.findBookedDestination(newTrip, allDestinations)
+    const bookModal = document.getElementById('bookModal')
+    this.toggleView(bookModal)
+    bookModal.innerHTML = `
+    <article class="book-modal-content" id='bookModalContent'>
+    <span class="book-close-modal" id="bookCloseModal">&times;</span>
+      <div>
+        <label for='booking-msg'>YOU JUST BOOKED A VACATION TO:</label>
+        <p class='booking-msg'>${dest.destination} for ${newTrip.duration} days!</p>
+      </div>
+    </article>`;
+  },
+
+  findBookedDestination(newTrip, allDestinations) {
+    const matchedDest = allDestinations.find(d => {
+      if (d.id === newTrip.destinationID) {
+        return d;
+      }
+    });
+    return matchedDest;
+  },
+
+  clearFormFields() {
+    const bookingForm = document.getElementById('bookingForm')
+    bookingForm.reset();
   },
 
   toggleView(element) {

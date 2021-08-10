@@ -1,21 +1,23 @@
 import './css/base.scss';
 // import './css/styles.scss';
-import { fetchAll } from './apiCalls';
+import { fetchAll, postNewTrip } from './apiCalls';
 import { domUpdates } from './domUpdates';
 import Trip from './Trip';
 import Traveler from './Traveler';
 import Destination from './Destination';
 
-let navButtons = document.querySelectorAll('.nav-btn')
-let allTripBtn = document.getElementById('allTrips')
-let clickToBook = document.getElementById('clickToBook')
-let bookForm = document.getElementById('bookingForm')
-let loginBtn = document.getElementById('loginBtn')
-let logoutBtn = document.getElementById('logoutBtn')
-let loginPage = document.getElementById('loginPage')
-let mainPage = document.getElementById('mainPage')
-let estimatedTripCostBtn = document.getElementById('costBtn')
-let closeModal = document.getElementById('costModal')
+let navButtons = document.querySelectorAll('.nav-btn');
+let allTripBtn = document.getElementById('allTrips');
+let clickToBook = document.getElementById('clickToBook');
+let bookForm = document.getElementById('bookingForm');
+let loginBtn = document.getElementById('loginBtn');
+let logoutBtn = document.getElementById('logoutBtn');
+let loginPage = document.getElementById('loginPage');
+let mainPage = document.getElementById('mainPage');
+let estimatedTripCostBtn = document.getElementById('costBtn');
+let closeCostModal = document.getElementById('costModal');
+let bookYourTripBtn = document.getElementById('bookBtn');
+let closeBookModal = document.getElementById('bookModal');
 
 let traveler, travelers;
 let allDestinations, allTrips;
@@ -29,25 +31,36 @@ loginBtn.addEventListener('click', logInLogOut)
 estimatedTripCostBtn.addEventListener('click', function() {
   showTripCosts(event)
 });
-closeModal.addEventListener('click', function() {
+closeCostModal.addEventListener('click', function() {
   closeModalWindow(event)
+});
+bookYourTripBtn.addEventListener('click', function() {
+  bookNewTrip(event);
+});
+closeBookModal.addEventListener('click', function() {
+  closeBookWindow(event)
 })
 
 window.addEventListener('load', function() {
-  fetchAll()
-  .then(data => {
-    fetchTravelersData = data[0].travelers;
-    fetchTripsData = data[1].trips;
-    fetchDestinationsData = data[2].destinations;
-    fetchSingleTravelerData = new Traveler(data[3]);
-    traveler = fetchSingleTravelerData;
-    travelers = fetchTravelersData.map(trav => new Traveler(trav));
-    allTrips = fetchTripsData.map(trip => new Trip(trip));
-    allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
-    renderTraveler()
-  })
-  .catch(err => displayError(err))
+  getAllData();
 })
+
+
+const getAllData = () => {
+  fetchAll()
+    .then(data => {
+      fetchTravelersData = data[0].travelers;
+      fetchTripsData = data[1].trips;
+      fetchDestinationsData = data[2].destinations;
+      fetchSingleTravelerData = new Traveler(data[3]);
+      traveler = fetchSingleTravelerData;
+      travelers = fetchTravelersData.map(trav => new Traveler(trav));
+      allTrips = fetchTripsData.map(trip => new Trip(trip));
+      allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
+      renderTraveler()
+    })
+    .catch(err => displayError(err))
+}
 
 const renderTraveler = () => {
   traveler.findTrips(allTrips, allDestinations);
@@ -99,20 +112,6 @@ function logInLogOut() {
   domUpdates.toggleView(mainPage)
 }
 
-function showTripCosts(event) {
-  event.preventDefault()
-  const formTripData = loadFormValues();
-  const newTrip = new Trip(formTripData)
-  const formFields = checkFormFields(newTrip);
-  if (!formFields) {
-    alert('Please check to make sure all fields are filled out and departure date is today or later.')
-  } else {
-    const tripCost = newTrip.calculateTripCost(allDestinations)
-    const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
-    domUpdates.displayTripCostsModal(tripCost, perPerson)
-  }
-}
-
 function loadFormValues(){
   const destinationID = document.getElementById('destinationChoices').value;
   const departureDate = document.getElementById('departureDateInput').value;
@@ -147,8 +146,45 @@ function checkFormFields(newTrip) {
   return filledOut;
 }
 
+function showTripCosts(event) {
+  event.preventDefault()
+  const formTripData = loadFormValues();
+  const newTrip = new Trip(formTripData)
+  const formFields = checkFormFields(newTrip);
+  if (!formFields) {
+    alert('Please check to make sure all fields are filled out and departure date is today or later.')
+  } else {
+    const tripCost = newTrip.calculateTripCost(allDestinations)
+    const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
+    domUpdates.displayTripCostsModal(tripCost, perPerson)
+  }
+}
+
 function closeModalWindow(event) {
   if (event.target.id === 'closeModal') {
     domUpdates.hideModal()
+  }
+}
+
+function bookNewTrip(event) {
+  event.preventDefault()
+  const postTripObj = loadFormValues();
+  const newTrip = new Trip(postTripObj)
+  const formFields = checkFormFields(newTrip);
+
+  if (!formFields) {
+    alert('Please check to make sure all fields are filled out and departure date is today or later.')
+  } else {
+    postNewTrip(newTrip)
+      .then(function() {
+        getAllData();
+        domUpdates.displayBookingModal(newTrip, allDestinations);
+      })
+  }
+}
+
+function closeBookWindow(event) {
+  if (event.target.id === 'bookCloseModal') {
+    domUpdates.hideBookingModal()
   }
 }
