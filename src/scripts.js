@@ -196,7 +196,7 @@ function bookNewTrip(event) {
   } else {
     postNewTrip(newTrip)
       .then(function() {
-        getAllData();
+        getAllData(traveler.id);
         domUpdates.displayBookingModal(newTrip, allDestinations);
       })
   }
