@@ -12,7 +12,6 @@
 <body>
   <main>
     <!-- LOGIN PAGE -->
-    <!-- need to hide this page prior to creating login functionality -->
     <section class='login-page hidden'id='loginPage'>
         <h1 class='login-title' id='loginTitle'>travel tracker</h1>
       <section class='login-form' id='loginForm'>
@@ -27,10 +26,10 @@
           </form>
       </section>
   </section>
-  <!-- ^^ need to hide this page prior to creating login functionality ^^-->
 
-  <!-- MAIN PAGE need to have hidden as well and can toggle back and forth from login -->
+<!-- MAIN PAGE -->
   <section class='main-page' id='mainPage'>
+    <!-- MAIN PAGE HEADER -->
     <header class='main-header' id='mainHeader'>
       <h1><i class="fas fa-globe-europe"></i>your travel tracker</h1>
       <span class='logout-btn' id='logoutBtn'>log out</span>
@@ -39,11 +38,12 @@
     <section class='greeting' id='greeting'>
       <h2 class='greeting-msg' id='greetingMsg'></h2>
     </section>
-    <!-- NAV BUTTONS -->
+    <!-- MAIN PAGE TOTAL COST -->
     <section class='cost-logout-section' id='costLogoutSection'>
       <h3>total spent this year: </h3>
       <p class='total-spent' id='totalSpent'></p>
     </section>
+    <!-- NAV BUTTONS -->
     <nav class='nav-buttons' id='navButtons'>
       <button class='nav-btn' id='past'>past trips</button>
       <button class='nav-btn' id='present'>present trips</button>
@@ -57,8 +57,10 @@
       <h4 for="bookingForm" class="click-to-book" id='clickToBook'>
         >>  book your next trip  <<
       </h4>
+      <!-- FORM -->
       <form role='booking-form' class='booking-form hidden' id="bookingForm">
         <div class="input">
+          <!-- DESTINATION -->
           <label for="destinationForm">choose a destination:
             <select name="destination-choices" id="destinationChoices" required>
               <option value="0" required>choose destination</option>
@@ -66,32 +68,38 @@
           </label>
         </div>
         <div class="input">
+          <!-- DEPARTURE -->
           <label for="departureDateForm">departure date:
             <input name="departure-date-input" id="departureDateInput" type="date" max="2025-12-31" required>
           </label>
         </div>
         <div class="input"></div>
+        <!-- DURATION -->
           <label for="durationForm">trip duration:
             <input name="duration-input" id="durationInput" type="number" min="1" required>
           </label>
         </div>
         <div class="input">
+          <!-- TRAVELERS -->
           <label for="travelersForm">number of travelers:
             <input name="travelers-input" id="travelersInput" type="number" min="1" required>
           </label>
         </div>
+        <!-- COST AND BOOK TRIP BUTTONS -->
         <div class="booking-btns">
           <button class="cost-btn" id="costBtn">estimated trip cost</button>
           <button class="book-btn" id="bookBtn">book your trip</button>
         </div>
       </form>
+      <!-- BOOKING ERROR -->
       <p class='booking-error' id='bookingError'></p>
     </section>
-  <!-- MODAL -->
+  <!-- ESTIMATE COST MODAL -->
     <section class="cost-modal hidden" id="costModal">
       <article class="modal-content" id='modalContent'>
       </article>
     </section>
+    <!-- BOOKING CONFIRMATION MODAL -->
     <section class="book-modal hidden" id="bookModal">
       <article class="book-modal-content" id='bookModalContent'>
       </article>
@@ -104,8 +112,6 @@
     </section>
   </section>
   </main>
-  <!-- <img src='./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
-
   <script src="bundle.js"></script>
 </body>
 </html>
