@@ -53,7 +53,6 @@ function validateLogin(event) {
   if (usernameInput !== '' && passwordInput !== ''
   && usernameInput.includes('traveler') && passwordInput === 'travel2020'
   && travelerID > 0 && travelerID < 51 && travelerID.length <= 2) {
-    loginInputs.reset();
     logInLogOut();
     getAllData(travelerID);
   } else {
@@ -62,8 +61,8 @@ function validateLogin(event) {
     setTimeout(() => {
           loginErrMsg.innerText = ''
         }, 2000)
-    loginInputs.reset()
   }
+  loginInputs.reset()
 }
 
 const getAllData = (userID) => {
