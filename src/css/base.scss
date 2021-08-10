@@ -71,13 +71,20 @@ h5 {
 }
 
 .cost-logout-section {
-  margin-top: -9%;
   float: right;
   text-align: center;
-  margin-right: 1.5%;
-  border: solid 1px black;
+  border-left: solid .7px $primary-color;
+  border-bottom: solid .7px $primary-color;
   padding: .5%;
   width: 15%;
+}
+
+.total-spent-msg {
+  font-size: 1em;
+}
+
+.total-spent {
+  font-size: 1.5em;
 }
 
 .nav-buttons {
