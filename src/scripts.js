@@ -19,7 +19,7 @@ let closeCostModal = document.getElementById('costModal');
 let bookYourTripBtn = document.getElementById('bookBtn');
 let closeBookModal = document.getElementById('bookModal');
 
-let traveler, travelers;
+let usernameID, traveler, travelers;
 let allDestinations, allTrips;
 let date = new Date();
 let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
@@ -27,7 +27,9 @@ let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinatio
 navButtons.forEach(button => button.addEventListener('click', renderCards))
 clickToBook.addEventListener('click', showBookingForm)
 logoutBtn.addEventListener('click', logInLogOut)
-loginBtn.addEventListener('click', logInLogOut)
+loginBtn.addEventListener('click', function() {
+  validateLogin(event);
+})
 estimatedTripCostBtn.addEventListener('click', function() {
   showTripCosts(event)
 });
@@ -41,19 +43,36 @@ closeBookModal.addEventListener('click', function() {
   closeBookWindow(event)
 })
 
-window.addEventListener('load', function() {
-  getAllData();
-})
+function validateLogin(event) {
+  event.preventDefault();
+  const usernameInput = document.getElementById('username').value;
+  const travelerID = usernameInput.split('traveler')[1]
+  const passwordInput = document.getElementById('password').value;
+  const loginInputs = document.getElementById('loginInputs')
 
+  if (usernameInput !== '' && passwordInput !== ''
+  && usernameInput.includes('traveler') && passwordInput === 'travel2020'
+  && travelerID > 0 && travelerID < 51 && travelerID.length <= 2) {
+    logInLogOut();
+    getAllData(travelerID);
+  } else {
+    const loginErrMsg = document.getElementById('loginError');
+    domUpdates.toggleView(loginErrMsg);
+    setTimeout(() => {
+      domUpdates.toggleView(loginErrMsg);
+    }, 2000)
+  }
+  loginInputs.reset()
+}
 
-const getAllData = () => {
-  fetchAll()
+const getAllData = (userID) => {
+  fetchAll(userID)
     .then(data => {
       fetchTravelersData = data[0].travelers;
       fetchTripsData = data[1].trips;
       fetchDestinationsData = data[2].destinations;
-      fetchSingleTravelerData = new Traveler(data[3]);
-      traveler = fetchSingleTravelerData;
+      fetchSingleTravelerData = data[3];
+      traveler = new Traveler(fetchSingleTravelerData)
       travelers = fetchTravelersData.map(trav => new Traveler(trav));
       allTrips = fetchTripsData.map(trip => new Trip(trip));
       allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
@@ -177,7 +196,7 @@ function bookNewTrip(event) {
   } else {
     postNewTrip(newTrip)
       .then(function() {
-        getAllData();
+        getAllData(traveler.id);
         domUpdates.displayBookingModal(newTrip, allDestinations);
       })
   }

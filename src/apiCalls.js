@@ -10,12 +10,12 @@ const fetchSingleTraveler = (id) => {
     .catch(err => displayError(err))
 }
 
-const fetchAll = () => {
+const fetchAll = (id) => {
   return Promise.all([
     fetchAPIData('travelers'),
     fetchAPIData('trips'),
     fetchAPIData('destinations'),
-    fetchSingleTraveler('4')
+    fetchSingleTraveler(`${id}`)
   ])
   .catch(err => displayError(err))
 }
