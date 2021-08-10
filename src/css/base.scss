@@ -156,10 +156,9 @@ h5 {
   padding: 0px;
   border: 1px solid #888;
   width: 35%;
-  height: 20%;
+  height: 30%;
   overflow-y: scroll;
   box-shadow: 0px 7px 29px 0px black;
-  margin-bottom: 2%;
 }
 
 .trip-costs {
@@ -171,17 +170,19 @@ h5 {
 .trip-cost,
 .trip-cost-per-person {
   font-family: sans-serif;
-  font-size: 2.2em;
-  margin: 1%;
+  font-size: 3em;
   color: purple;
 }
 
 .close-modal {
   display: flex;
   justify-content: flex-end;
-  margin-right: 4%;
-  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  font-size: 2.7em;
   font-weight: bold;
+  margin-right: 2%;
+  margin-top: -5%;
 }
 
 .close-modal:hover {

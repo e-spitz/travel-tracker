@@ -15,7 +15,7 @@ let logoutBtn = document.getElementById('logoutBtn')
 let loginPage = document.getElementById('loginPage')
 let mainPage = document.getElementById('mainPage')
 let estimatedTripCostBtn = document.getElementById('costBtn')
-
+let closeModal = document.getElementById('costModal')
 
 let traveler, travelers;
 let allDestinations, allTrips;
@@ -29,6 +29,9 @@ loginBtn.addEventListener('click', logInLogOut)
 estimatedTripCostBtn.addEventListener('click', function() {
   showTripCosts(event)
 });
+closeModal.addEventListener('click', function() {
+  closeModalWindow(event)
+})
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -142,4 +145,10 @@ function checkFormFields(newTrip) {
     filledOut = false;
   }
   return filledOut;
+}
+
+function closeModalWindow(event) {
+  if (event.target.id === 'closeModal') {
+    domUpdates.hideModal()
+  }
 }

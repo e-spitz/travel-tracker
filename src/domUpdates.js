@@ -76,6 +76,11 @@ export const domUpdates = {
     </article>`;
   },
 
+  hideModal() {
+      const costModal = document.getElementById('costModal')
+      this.toggleView(costModal)
+  },
+
   toggleView(element) {
     element.classList.toggle('hidden')
   }
