@@ -15,7 +15,7 @@ const fetchAll = () => {
     fetchAPIData('travelers'),
     fetchAPIData('trips'),
     fetchAPIData('destinations'),
-    fetchSingleTraveler('14')
+    fetchSingleTraveler('38')
   ])
   .catch(err => displayError(err))
 }

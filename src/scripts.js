@@ -171,7 +171,7 @@ function bookNewTrip(event) {
     alert('Please check to make sure all fields are filled out and departure date is today or later.')
   } else {
     postNewTrip(newTrip)
-    domUpdates.displayBookingModal(newTrip);
+    domUpdates.displayBookingModal(newTrip)
   }
 }
 

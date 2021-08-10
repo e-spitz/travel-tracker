@@ -11,7 +11,7 @@ export const domUpdates = {
     const formatter = new Intl.NumberFormat('en-US', {
       style:'currency',
       currency: 'USD'
-    })
+    });
     if (total !== 0) {
       totalSpent.innerText = `${formatter.format(total)}`;
     } else {
@@ -63,7 +63,7 @@ export const domUpdates = {
 
   displayTripCostsModal(cost, perPerson) {
     const costModal = document.getElementById('costModal')
-    costModal.classList.remove('hidden');
+    this.toggleView(costModal);
     costModal.innerHTML = `
     <article class="modal-content" id='modalContent'>
     <span class="close-modal" id="closeModal">&times;</span>
@@ -82,13 +82,14 @@ export const domUpdates = {
   },
 
   hideBookingModal() {
+    this.clearFormFields();
     const bookModal = document.getElementById('bookModal')
     this.toggleView(bookModal)
   },
 
   displayBookingModal(newTrip) {
     const bookModal = document.getElementById('bookModal')
-    bookModal.classList.remove('hidden');
+    this.toggleView(bookModal)
     bookModal.innerHTML = `
     <article class="book-modal-content" id='bookModalContent'>
     <span class="book-close-modal" id="bookCloseModal">&times;</span>
@@ -97,6 +98,11 @@ export const domUpdates = {
         <p class='booking-msg'>${newTrip.id} - A TEST</p>
       </div>
     </article>`;
+  },
+
+  clearFormFields() {
+    const bookingForm = document.getElementById('bookingForm')
+    bookingForm.reset();
   },
 
   toggleView(element) {
