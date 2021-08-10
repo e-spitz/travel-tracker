@@ -166,12 +166,19 @@ h5 {
 }
 
 .booking-form {
-  font-size: 1.2em;
+  font-size: 1.4em;
   display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 2em;
   border-bottom: solid .5px $primary-color;
+}
+
+.form-fields {
+  font-size: .7em;
+  border: solid .2px $secondary-color;
+  border-radius: 5%;
+  text-align: center;
+  padding: 1%;
+  box-shadow: .2px .2px 1px 0px $secondary-color;
 }
 
 .cost-modal,

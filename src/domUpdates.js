@@ -56,7 +56,7 @@ export const domUpdates = {
     let destNames = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination))
     destNames.forEach(d => {
       let destSelect = `
-      <option value='${d.id}' required>${d.destination}</option>`
+      <option class='form-fields' value='${d.id}' required>${d.destination}</option>`
       destList.insertAdjacentHTML('beforeend', destSelect)
     });
   },
