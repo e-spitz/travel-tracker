@@ -59,7 +59,7 @@ function validateLogin(event) {
     const loginErrMsg = document.getElementById('loginError');
     domUpdates.toggleView(loginErrMsg);
     setTimeout(() => {
-      loginErrMsg.innerText = ''
+      domUpdates.toggleView(loginErrMsg);
     }, 2000)
   }
   loginInputs.reset()
