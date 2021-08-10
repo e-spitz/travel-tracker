@@ -82,12 +82,15 @@ export const domUpdates = {
   },
 
   hideBookingModal() {
-    this.clearFormFields();
     const bookModal = document.getElementById('bookModal')
-    this.toggleView(bookModal)
+    const bookingForm = document.getElementById('bookingForm')
+    this.clearFormFields();
+    this.toggleView(bookModal);
+    this.toggleView(bookingForm);
   },
 
-  displayBookingModal(newTrip) {
+  displayBookingModal(newTrip, allDestinations) {
+    const dest = this.findBookedDestination(newTrip, allDestinations)
     const bookModal = document.getElementById('bookModal')
     this.toggleView(bookModal)
     bookModal.innerHTML = `
@@ -95,9 +98,18 @@ export const domUpdates = {
     <span class="book-close-modal" id="bookCloseModal">&times;</span>
       <div>
         <label for='booking-msg'>YOU JUST BOOKED A VACATION TO:</label>
-        <p class='booking-msg'>${newTrip.id} - A TEST</p>
+        <p class='booking-msg'>${dest.destination} for ${newTrip.duration} days!</p>
       </div>
     </article>`;
+  },
+
+  findBookedDestination(newTrip, allDestinations) {
+    const matchedDest = allDestinations.find(d => {
+      if (d.id === newTrip.destinationID) {
+        return d;
+      }
+    });
+    return matchedDest;
   },
 
   clearFormFields() {
