@@ -81,6 +81,7 @@ export const domUpdates = {
       this.toggleView(costModal)
   },
 
+
   hideBookingModal() {
     const bookModal = document.getElementById('bookModal')
     const bookingForm = document.getElementById('bookingForm')
@@ -91,6 +92,7 @@ export const domUpdates = {
 
   displayBookingModal(newTrip, allDestinations) {
     const dest = this.findBookedDestination(newTrip, allDestinations)
+    console.log('display d', dest);
     const bookModal = document.getElementById('bookModal')
     this.toggleView(bookModal)
     bookModal.innerHTML = `
@@ -104,11 +106,8 @@ export const domUpdates = {
   },
 
   findBookedDestination(newTrip, allDestinations) {
-    const matchedDest = allDestinations.find(d => {
-      if (d.id === newTrip.destinationID) {
-        return d;
-      }
-    });
+    const matchedDest = allDestinations.find(d => d.id === newTrip.destinationID)
+    console.log('find d', matchedDest);
     return matchedDest;
   },
 
