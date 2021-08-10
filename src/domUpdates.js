@@ -96,9 +96,9 @@ export const domUpdates = {
     bookModal.innerHTML = `
     <article class="book-modal-content" id='bookModalContent'>
     <span class="book-close-modal" id="bookCloseModal">&times;</span>
-      <div>
-        <label for='booking-msg'>YOU JUST BOOKED A VACATION TO:</label>
-        <p class='booking-msg'>${dest.destination} for ${newTrip.duration} days!</p>
+      <div class='booking-confirm-msg'>
+        <label for='booking-msg' class='booking-msg'>YOU JUST BOOKED A VACATION TO:</label>
+        <p class='booking-msg-info'>${dest.destination} for ${newTrip.duration} days!</p>
       </div>
     </article>`;
   },
