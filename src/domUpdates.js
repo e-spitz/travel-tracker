@@ -81,6 +81,11 @@ export const domUpdates = {
       this.toggleView(costModal)
   },
 
+  hideBookingModal() {
+    const bookModal = document.getElementById('bookModal')
+    this.toggleView(bookModal)
+  },
+
   displayBookingModal(newTrip) {
     const bookModal = document.getElementById('bookModal')
     bookModal.classList.remove('hidden');

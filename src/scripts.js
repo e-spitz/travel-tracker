@@ -17,6 +17,7 @@ let mainPage = document.getElementById('mainPage');
 let estimatedTripCostBtn = document.getElementById('costBtn');
 let closeCostModal = document.getElementById('costModal');
 let bookYourTripBtn = document.getElementById('bookBtn');
+let closeBookModal = document.getElementById('bookModal');
 
 let traveler, travelers;
 let allDestinations, allTrips;
@@ -36,6 +37,9 @@ closeCostModal.addEventListener('click', function() {
 bookYourTripBtn.addEventListener('click', function() {
   bookNewTrip(event);
 });
+closeBookModal.addEventListener('click', function() {
+  closeBookWindow(event)
+})
 
 window.addEventListener('load', function() {
   fetchAll()
@@ -103,20 +107,6 @@ function logInLogOut() {
   domUpdates.toggleView(mainPage)
 }
 
-function showTripCosts(event) {
-  event.preventDefault()
-  const formTripData = loadFormValues();
-  const newTrip = new Trip(formTripData)
-  const formFields = checkFormFields(newTrip);
-  if (!formFields) {
-    alert('Please check to make sure all fields are filled out and departure date is today or later.')
-  } else {
-    const tripCost = newTrip.calculateTripCost(allDestinations)
-    const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
-    domUpdates.displayTripCostsModal(tripCost, perPerson)
-  }
-}
-
 function loadFormValues(){
   const destinationID = document.getElementById('destinationChoices').value;
   const departureDate = document.getElementById('departureDateInput').value;
@@ -151,6 +141,20 @@ function checkFormFields(newTrip) {
   return filledOut;
 }
 
+function showTripCosts(event) {
+  event.preventDefault()
+  const formTripData = loadFormValues();
+  const newTrip = new Trip(formTripData)
+  const formFields = checkFormFields(newTrip);
+  if (!formFields) {
+    alert('Please check to make sure all fields are filled out and departure date is today or later.')
+  } else {
+    const tripCost = newTrip.calculateTripCost(allDestinations)
+    const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
+    domUpdates.displayTripCostsModal(tripCost, perPerson)
+  }
+}
+
 function closeModalWindow(event) {
   if (event.target.id === 'closeModal') {
     domUpdates.hideModal()
@@ -167,6 +171,12 @@ function bookNewTrip(event) {
     alert('Please check to make sure all fields are filled out and departure date is today or later.')
   } else {
     postNewTrip(newTrip)
-    domUpdates.displayBookingModal(newTrip)
+    domUpdates.displayBookingModal(newTrip);
+  }
+}
+
+function closeBookWindow(event) {
+  if (event.target.id === 'bookCloseModal') {
+    domUpdates.hideBookingModal()
   }
 }
