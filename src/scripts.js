@@ -43,10 +43,6 @@ closeBookModal.addEventListener('click', function() {
   closeBookWindow(event)
 })
 
-window.addEventListener('load', function() {
-  getAllData();
-})
-
 function validateLogin(event) {
   event.preventDefault();
   const usernameInput = document.getElementById('username').value;
@@ -59,7 +55,7 @@ function validateLogin(event) {
   && travelerID > 0 && travelerID < 51 && travelerID.length <= 2) {
     loginInputs.reset();
     logInLogOut();
-    return travelerID;
+    getAllData(travelerID);
   } else {
     const loginErrMsg = document.getElementById('loginError');
     domUpdates.toggleView(loginErrMsg);
@@ -68,20 +64,15 @@ function validateLogin(event) {
         }, 2000)
     loginInputs.reset()
   }
-  getAllData(travelerID);
 }
 
-const getAllData = (id) => {
-  fetchAll()
+const getAllData = (userID) => {
+  fetchAll(userID)
     .then(data => {
       fetchTravelersData = data[0].travelers;
       fetchTripsData = data[1].trips;
       fetchDestinationsData = data[2].destinations;
-      fetchSingleTravelerData = fetchTravelersData.find(trav => {
-        if (trav.id === id) {
-          return trav;
-        }
-      })
+      fetchSingleTravelerData = data[3];
       traveler = new Traveler(fetchSingleTravelerData)
       travelers = fetchTravelersData.map(trav => new Traveler(trav));
       allTrips = fetchTripsData.map(trip => new Trip(trip));
@@ -90,16 +81,6 @@ const getAllData = (id) => {
     })
     .catch(err => displayError(err))
 }
-
-// function findUserID(usernameID) {
-//   console.log('test', usernameID);
-//   const travID = travelers.find(trav => {
-//     if (usernameID === trav.id) {
-//       return trav.id;
-//     }
-//   })
-//   return travID;
-// }
 
 const renderTraveler = () => {
   traveler.findTrips(allTrips, allDestinations);
