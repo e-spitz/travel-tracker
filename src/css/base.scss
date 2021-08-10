@@ -5,22 +5,23 @@
   border: 0;
   font-family: "Raleway", sans-serif;
   color: #093d39;
-  vertical-align: baseline;
   line-height: 1.75;
 }
 
 $primary-background: white;
-
+$primary-color: #093d39;
+$secondary-color: purple;
 
 body {
   background: $primary-background;
 }
 
 h4 {
-  font-size: 2em;
+  font-size: 2.5em;
   margin-top: 2%;
   text-align: center;
-  border-bottom: solid 1px black;
+  border-bottom: solid .5px $primary-color;
+  padding-bottom: 1.6%;
 }
 
 h5 {
@@ -30,30 +31,44 @@ h5 {
   margin-top: 1%;
 }
 
+.total-spent-msg {
+  font-size: 1em;
+}
+
+.total-spent {
+  font-size: 1.5em;
+}
+
 .main-header {
   display: flex;
   justify-content: flex-end;
-  border-bottom: solid 1px black;
-  margin-top: .5%;
+  border-bottom: solid .5px $primary-color;
+  color: white;
+  background: $primary-color;
     h1 {
+      color: white;
+      background: $primary-color;
       font-size: 2em;
       margin-right: 1.5%;
     }
 
     .fas {
+      color: white;
+      background: $primary-color;
       font-size: 1.2em;
       letter-spacing: .2em;
     }
 
     .logout-btn {
-      margin-top: -.5%;
+      color: white;
+      background: $primary-color;
       width: 4%;
       height: 50%;
-      border: solid 1px black;
+      border: solid 1px white;
       text-align: center;
       border-radius: 2%;
       font-size: .8em;
-      box-shadow: .5px .5px 5px 0px black;
+      box-shadow: .5px .5px 5px 0px white;
     }
 }
 
@@ -65,11 +80,10 @@ h5 {
 }
 
 .cost-logout-section {
-  margin-top: -9%;
   float: right;
   text-align: center;
-  margin-right: 1.5%;
-  border: solid 1px black;
+  border-left: solid .7px $primary-color;
+  border-bottom: solid .7px $primary-color;
   padding: .5%;
   width: 15%;
 }
@@ -92,12 +106,17 @@ h5 {
 }
 
 .login-btn:hover,
-.nav-btn:hover,
-.logout-btn:hover {
+.nav-btn:hover {
   cursor: pointer;
-  color: purple;
+  color: $secondary-color;
   transform: translateY(-2px);
   transition: .4s;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+  background: white;
+  color: $secondary-color;
 }
 
 .trip-cards-container {
@@ -139,11 +158,50 @@ h5 {
 
 .click-to-book:hover {
   cursor: pointer;
-  color: purple;
+  color: $secondary-color;
   transition-property: all;
   transition-duration: .4s;
   transition-timing-function: ease-in-out;
   letter-spacing: 5px;
+}
+
+.booking-form {
+  font-size: 1.4em;
+  display: flex;
+  padding: 2em;
+  border-bottom: solid .5px $primary-color;
+}
+
+.form-fields {
+  font-size: .7em;
+  border: solid .2px $secondary-color;
+  border-radius: 5%;
+  text-align: center;
+  padding: 1%;
+  box-shadow: .2px .2px 1px 0px $primary-color;
+}
+
+.cost-btn,
+.book-btn {
+  display: inline-flex;
+  justify-content: center;
+  font-size: .7em;
+  width: 100%;
+  height: 35%;
+  margin-left: 5%;
+  box-shadow: .5px .5px 5px 0px $primary-color;
+}
+
+.cost-btn:hover,
+.book-btn:hover {
+  cursor: pointer;
+  color: $secondary-color;
+  transform: translateY(-2px);
+  transition: .4s;
+}
+
+.cost-btn {
+  margin-bottom: 2%;
 }
 
 .cost-modal,
@@ -160,46 +218,65 @@ h5 {
   justify-content: center;
 }
 
+.trip-costs,
+.booking-confirm-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.trip-cost,
+.trip-cost-per-person {
+  margin-top: -4%;
+  font-size: 3em;
+  color: $secondary-color;
+}
+
 .modal-content,
 .book-modal-content {
   z-index: 2;
-  display: flex;
-  flex-direction: column;
   background-color: white;
   padding: 0px;
   border: 1px solid #888;
   width: 35%;
-  height: 30%;
+  height: 40%;
   overflow-y: scroll;
   box-shadow: 0px 7px 29px 0px black;
   justify-content: center;
 }
 
-.trip-costs {
-  text-align: center;
-  font-family: sans-serif;
-  font-size: .8em;
+.book-modal-content {
+  height: 30%;
 }
 
-.trip-cost,
-.trip-cost-per-person {
-  font-family: sans-serif;
-  font-size: 3em;
-  color: purple;
+.booking-msg-info {
+  text-align: center;
+  font-size: 1.3em;
+  color: $secondary-color;
 }
 
 .close-modal {
   display: flex;
   justify-content: flex-end;
-  margin: 0;
-  padding: 0;
   font-size: 2.7em;
   font-weight: bold;
   margin-right: 2%;
-  margin-top: -5%;
+  margin-top: -2%;
 }
 
-.close-modal:hover {
+.book-close-modal {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2.7em;
+  font-weight: bold;
+  margin-right: 2%;
+  margin-top: -2%;
+}
+
+.close-modal:hover,
+.book-close-modal:hover {
   cursor: pointer;
 }
 
