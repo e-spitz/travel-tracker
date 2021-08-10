@@ -17,10 +17,11 @@ body {
 }
 
 h4 {
-  font-size: 2em;
+  font-size: 2.5em;
   margin-top: 2%;
   text-align: center;
-  border-bottom: solid 1px black;
+  border-bottom: solid .5px $primary-color;
+  padding-bottom: 1.6%;
 }
 
 h5 {
@@ -33,7 +34,7 @@ h5 {
 .main-header {
   display: flex;
   justify-content: flex-end;
-  border-bottom: solid 1px black;
+  border-bottom: solid .5px $primary-color;
   color: white;
   background: $primary-color;
     h1 {
@@ -162,6 +163,15 @@ h5 {
   transition-duration: .4s;
   transition-timing-function: ease-in-out;
   letter-spacing: 5px;
+}
+
+.booking-form {
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  border-bottom: solid .5px $primary-color;
 }
 
 .cost-modal,
