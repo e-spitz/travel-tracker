@@ -34,7 +34,7 @@ closeCostModal.addEventListener('click', function() {
   closeModalWindow(event)
 });
 bookYourTripBtn.addEventListener('click', function() {
-  bookNewTrip();
+  bookNewTrip(event);
 });
 
 window.addEventListener('load', function() {
@@ -166,7 +166,7 @@ function bookNewTrip(event) {
   if (!formFields) {
     alert('Please check to make sure all fields are filled out and departure date is today or later.')
   } else {
-    apiCalls.postNewTrip(newTrip)
+    postNewTrip(newTrip)
     domUpdates.displayBookingModal(newTrip)
   }
 }
