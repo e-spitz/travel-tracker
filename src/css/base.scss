@@ -31,6 +31,14 @@ h5 {
   margin-top: 1%;
 }
 
+.total-spent-msg {
+  font-size: 1em;
+}
+
+.total-spent {
+  font-size: 1.5em;
+}
+
 .main-header {
   display: flex;
   justify-content: flex-end;
@@ -78,14 +86,6 @@ h5 {
   border-bottom: solid .7px $primary-color;
   padding: .5%;
   width: 15%;
-}
-
-.total-spent-msg {
-  font-size: 1em;
-}
-
-.total-spent {
-  font-size: 1.5em;
 }
 
 .nav-buttons {
