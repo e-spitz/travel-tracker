@@ -5,12 +5,12 @@
   border: 0;
   font-family: "Raleway", sans-serif;
   color: #093d39;
-  vertical-align: baseline;
   line-height: 1.75;
 }
 
 $primary-background: white;
-
+$primary-color: #093d39;
+$secondary-color: purple;
 
 body {
   background: $primary-background;
@@ -35,24 +35,24 @@ h5 {
   justify-content: flex-end;
   border-bottom: solid 1px black;
   color: white;
-  background: #093d39;
+  background: $primary-color;
     h1 {
       color: white;
-      background: #093d39;
+      background: $primary-color;
       font-size: 2em;
       margin-right: 1.5%;
     }
 
     .fas {
       color: white;
-      background: #093d39;
+      background: $primary-color;
       font-size: 1.2em;
       letter-spacing: .2em;
     }
 
     .logout-btn {
       color: white;
-      background: #093d39;
+      background: $primary-color;
       width: 4%;
       height: 50%;
       border: solid 1px white;
@@ -100,7 +100,7 @@ h5 {
 .login-btn:hover,
 .nav-btn:hover {
   cursor: pointer;
-  color: purple;
+  color: $secondary-color;
   transform: translateY(-2px);
   transition: .4s;
 }
@@ -108,7 +108,7 @@ h5 {
 .logout-btn:hover {
   cursor: pointer;
   background: white;
-  color: #093d39;
+  color: $secondary-color;
 }
 
 .trip-cards-container {
@@ -150,7 +150,7 @@ h5 {
 
 .click-to-book:hover {
   cursor: pointer;
-  color: purple;
+  color: $secondary-color;
   transition-property: all;
   transition-duration: .4s;
   transition-timing-function: ease-in-out;
@@ -196,7 +196,7 @@ h5 {
 .trip-cost-per-person {
   font-family: sans-serif;
   font-size: 3em;
-  color: purple;
+  color: $secondary-color;
 }
 
 .close-modal {
