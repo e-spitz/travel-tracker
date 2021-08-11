@@ -184,7 +184,7 @@ describe('Traveler', () => {
 
     date = '2020/08/07'
     const trip = traveler2.findPastTrips(date);
-    expect(trip).to.equal('You haven\'t been travelin\' much...');
+    expect(trip).to.deep.equal([]);
   });
 
   it('should be able to find present trips', () => {
@@ -208,7 +208,7 @@ describe('Traveler', () => {
     date = '2020/07/11'
     traveler3.findTrips(trips, destinations);
     const presentTrips2 = traveler3.findPresentTrips(date);
-    expect(presentTrips2).to.equal('You are not currently on a trip. Bummer!');
+    expect(presentTrips2).to.deep.equal([]);
   });
 
   it('should be able to find upcoming trips', () => {
@@ -231,7 +231,7 @@ describe('Traveler', () => {
     date = '2021/02/13';
     traveler3.findTrips(trips, destinations);
     const futureTrips2 = traveler3.findUpcomingTrips(date);
-    expect(futureTrips2).to.equal('You have no future trips scheduled. Time for a vacation!');
+    expect(futureTrips2).to.deep.equal([]);
   });
 
   it('should be able to find pending status trips', () => {
@@ -254,25 +254,23 @@ describe('Traveler', () => {
 
     traveler3.findTrips(trips, destinations);
     const pendingTrips2 = traveler3.findPendingTrips();
-    expect(pendingTrips2).to.equal('You have no trips to be approved at this time.');
+    expect(pendingTrips2).to.deep.equal([]);
   });
 
   it('should have a way to calculate total amount spent for the year', () => {
     const traveler4 = new Traveler(travelers[47]);
-    date = '2020/10/29';
+    date = '2020/09/06';
+    let newDate = new Date(date)
     traveler4.findTrips(trips, destinations);
-    traveler4.calculateTotalAmountSpent(date, destinations);
+    traveler4.calculateTotalAmountSpent(newDate, destinations);
     expect(traveler4.amountSpent).to.equal(15141);
 
-    date = '2019/05/20';
+    date = '2019/09/06';
+    newDate = new Date(date)
     traveler4.findTrips(trips, destinations);
-    traveler4.calculateTotalAmountSpent(date, destinations);
+    traveler4.calculateTotalAmountSpent(newDate, destinations);
+    console.log(traveler4.trips);
     expect(traveler4.amountSpent).to.equal(34716);
-
-    date = '2018/03/12';
-    traveler4.findTrips(trips, destinations);
-    const total = traveler4.calculateTotalAmountSpent(date, destinations);
-    expect(total).to.equal('Doh! It looks like you didn\'t travel this year.');
   });
 
 });
