@@ -28,7 +28,7 @@ body {
   align-items: center;
   padding: 5%;
 }
-  h1 {
+  .login-title {
     font-size: 3em;
     margin: 5px 0px 0px 0px;
     text-decoration: 1px underline;
@@ -79,13 +79,19 @@ body {
   color: white;
 }
 
-.login-error {
+.login-error,
+.booking-error {
   color: $primary-color;
   text-align: center;
   font-size: 2em;
 }
 
-h4 {
+.login-error {
+  color: white;
+  background: $primary-color;
+}
+
+.click-to-book {
   font-size: 2.5em;
   margin-top: 2%;
   text-align: center;
@@ -114,7 +120,7 @@ h5 {
   border-bottom: solid .5px $primary-color;
   color: white;
   background: $primary-color;
-    h1 {
+    .main-title {
       color: white;
       background: $primary-color;
       font-size: 2em;
@@ -151,8 +157,6 @@ h5 {
 .cost-logout-section {
   float: right;
   text-align: center;
-  border-left: solid .7px $primary-color;
-  border-bottom: solid .7px $primary-color;
   padding: .5%;
   width: 15%;
 }
@@ -272,6 +276,8 @@ h5 {
   margin-bottom: 2%;
 }
 
+// MODAL POP UPS
+
 .cost-modal,
 .book-modal {
   display: flex;
@@ -348,6 +354,145 @@ h5 {
   cursor: $primary-cursor;
 }
 
+// HIDDEN
+
 .hidden {
   display: none;
+}
+
+// MEDIA QUERIES
+
+@media screen and (max-width: 1110px) {
+  .booking-form {
+    font-size: 1em;
+    flex-direction: column;
+  }
+
+  .form-fields {
+    font-size: .4em;
+    border: solid .1px $secondary-color;
+    border-radius: 5%;
+    padding: .3%;
+  }
+
+  .cost-btn,
+  .book-btn {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 40%;
+    margin-top: 2%;
+    margin-left: 0;
+  }
+
+}
+
+@media screen and (max-width: 1050px) {
+
+  .trip-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cost-logout-section {
+    font-size: 1.2em;
+  }
+
+  .main-title {
+    font-size: 2em;
+  }
+
+  .logout-btn {
+    font-size: .5em;
+  }
+
+  .click-to-book {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .main-header {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  .login-btn,
+  .password,
+  .username {
+    font-size: 1em;
+    margin-left: 5%;
+  }
+
+  .total-spent-msg {
+    font-size: .7em;
+  }
+
+  .total-spent {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 650px) {
+
+  .greeting-msg {
+    font-size: 3.5em;
+  }
+
+  .nav-btn {
+    font-size: .6em;
+  }
+
+  .login-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-fields {
+    margin: 4%;
+    width: 35%;
+    padding: 1%;
+  }
+
+  .trip-cards-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .username,
+  .password,
+  .login-btn {
+    margin: 0;
+  }
+
+  .login-btn {
+   margin-top: 2%;
+   width: 35%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .greeting-msg {
+    font-size: 2.5em;
+  }
+
+  .click-to-book {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .login-title {
+    font-size: 2em;
+  }
+
+  .sign-in {
+    font-size: 1em;
+  }
+
+  .main-title {
+    font-size: 1em;
+  }
 }
