@@ -269,7 +269,6 @@ describe('Traveler', () => {
     newDate = new Date(date)
     traveler4.findTrips(trips, destinations);
     traveler4.calculateTotalAmountSpent(newDate, destinations);
-    console.log(traveler4.trips);
     expect(traveler4.amountSpent).to.equal(34716);
   });
 

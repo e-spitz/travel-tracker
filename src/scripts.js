@@ -171,7 +171,7 @@ function showTripCosts(event) {
   const newTrip = new Trip(formTripData)
   const formFields = checkFormFields(newTrip);
   if (!formFields) {
-    alert('Please check to make sure all fields are filled out and departure date is today or later.')
+    alert('Please check to make sure all fields are filled out and departure date is a future date.')
   } else {
     const tripCost = newTrip.calculateTripCost(allDestinations)
     const perPerson = newTrip.calculateCostPerPersonPerTrip(tripCost)
