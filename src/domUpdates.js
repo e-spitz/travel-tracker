@@ -8,15 +8,11 @@ export const domUpdates = {
 
   displayYearlyTotal(total) {
     const totalSpent = document.getElementById('totalSpent');
-    const formatter = new Intl.NumberFormat('en-US', {
+    const totalToCurrency = new Intl.NumberFormat('en-US', {
       style:'currency',
       currency: 'USD'
     });
-    if (total !== 0) {
-      totalSpent.innerText = `${formatter.format(total)}`;
-    } else {
-      totalSpent.innerText = 'None! Time to book a trip.';
-    }
+    totalSpent.innerText = `${totalToCurrency.format(total)}`;
   },
 
   displayCardSectionHeader(header) {
@@ -81,7 +77,6 @@ export const domUpdates = {
       this.toggleView(costModal)
   },
 
-
   hideBookingModal() {
     const bookModal = document.getElementById('bookModal')
     const bookingForm = document.getElementById('bookingForm')
@@ -92,7 +87,6 @@ export const domUpdates = {
 
   displayBookingModal(newTrip, allDestinations) {
     const dest = this.findBookedDestination(newTrip, allDestinations)
-    console.log('display d', dest);
     const bookModal = document.getElementById('bookModal')
     this.toggleView(bookModal)
     bookModal.innerHTML = `
@@ -105,9 +99,20 @@ export const domUpdates = {
     </article>`;
   },
 
+  displayPostErrorModal() {
+    const bookingError = document.getElementById('bookingError');
+    const bookingForm = document.getElementById('bookingForm')
+    bookingError.innerText = "There was a problem with the server. Please try booking at a later time.";
+    setTimeout(() => {
+      this.toggleView(bookingError);
+    }, 5000)
+    setTimeout(()=> {
+      this.toggleView(bookingForm)
+    }, 5000)
+  },
+
   findBookedDestination(newTrip, allDestinations) {
     const matchedDest = allDestinations.find(d => d.id === newTrip.destinationID)
-    console.log('find d', matchedDest);
     return matchedDest;
   },
 

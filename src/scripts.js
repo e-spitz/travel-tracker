@@ -60,7 +60,7 @@ function validateLogin(event) {
     domUpdates.toggleView(loginErrMsg);
     setTimeout(() => {
       domUpdates.toggleView(loginErrMsg);
-    }, 2000)
+    }, 3000)
   }
   loginInputs.reset()
 }
@@ -195,10 +195,15 @@ function bookNewTrip(event) {
     alert('Please check to make sure all fields are filled out and departure date is today or later.')
   } else {
     postNewTrip(newTrip)
-      .then(function() {
+    .then(response => {
+      console.log(response.message);
+      if (response.message !== '404 error') {
         getAllData(traveler.id);
         domUpdates.displayBookingModal(newTrip, allDestinations);
-      })
+      } else {
+        domUpdates.displayPostErrorModal();
+      }
+    })
   }
 }
 
