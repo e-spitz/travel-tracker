@@ -9,7 +9,7 @@ export const domUpdates = {
   displayYearlyTotal(total) {
     const totalSpent = document.getElementById('totalSpent');
     const totalToCurrency = new Intl.NumberFormat('en-US', {
-      style:'currency',
+      style: 'currency',
       currency: 'USD'
     });
     totalSpent.innerText = `${totalToCurrency.format(total)}`;
@@ -40,8 +40,8 @@ export const domUpdates = {
             <p>duration: ${trip.duration} days</p>
             <p>status: ${trip.status}</p>
           </article>`;
-          cardContainer.insertAdjacentHTML('beforeend', cardInfo);
-        });
+        cardContainer.insertAdjacentHTML('beforeend', cardInfo);
+      });
     } else {
       cardContainer.innerHTML = `<article class='no-trip'>You do not have any matching trips.</article>`
     }
@@ -73,8 +73,8 @@ export const domUpdates = {
   },
 
   hideModal() {
-      const costModal = document.getElementById('costModal')
-      this.toggleView(costModal)
+    const costModal = document.getElementById('costModal')
+    this.toggleView(costModal)
   },
 
   hideBookingModal() {

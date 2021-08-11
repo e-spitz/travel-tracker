@@ -2,9 +2,7 @@ import { expect } from 'chai';
 import trips from './test-data/trips-data';
 import destinations from './test-data/destination-data';
 import travelers from './test-data/travelers-data';
-import Trip from '../src/Trip.js';
 import Traveler from '../src/Traveler.js';
-import Destination from '../src/Destination.js';
 
 describe('Traveler', () => {
   let traveler1, traveler2, traveler3;
