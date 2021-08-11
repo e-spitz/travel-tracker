@@ -17,7 +17,7 @@ const fetchAll = (id) => {
     fetchAPIData('destinations'),
     fetchSingleTraveler(`${id}`)
   ])
-  .catch(err => console.log(err))
+    .catch(err => console.log(err))
 }
 
 const postNewTrip = (newTrip) => {
@@ -28,8 +28,8 @@ const postNewTrip = (newTrip) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => checkForError(response))
-  .catch(err => err)
+    .then(response => checkForError(response))
+    .catch(err => err)
 }
 
 const checkForError = (response) => {

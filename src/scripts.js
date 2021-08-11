@@ -7,7 +7,6 @@ import Traveler from './Traveler';
 import Destination from './Destination';
 
 let navButtons = document.querySelectorAll('.nav-btn');
-let allTripBtn = document.getElementById('allTrips');
 let clickToBook = document.getElementById('clickToBook');
 let bookForm = document.getElementById('bookingForm');
 let loginBtn = document.getElementById('loginBtn');
@@ -19,7 +18,7 @@ let closeCostModal = document.getElementById('costModal');
 let bookYourTripBtn = document.getElementById('bookBtn');
 let closeBookModal = document.getElementById('bookModal');
 
-let usernameID, traveler, travelers;
+let traveler, travelers;
 let allDestinations, allTrips;
 let date = new Date();
 let fetchSingleTravelerData, fetchTravelersData, fetchTripsData, fetchDestinationsData;
@@ -78,7 +77,6 @@ const getAllData = (userID) => {
       allDestinations = fetchDestinationsData.map(dest => new Destination(dest));
       renderTraveler()
     })
-    .catch(err => displayError(err))
 }
 
 const renderTraveler = () => {
@@ -131,7 +129,7 @@ function logInLogOut() {
   domUpdates.toggleView(mainPage)
 }
 
-function loadFormValues(){
+function loadFormValues() {
   const destinationID = document.getElementById('destinationChoices').value;
   const departureDate = document.getElementById('departureDateInput').value;
   const changeDate = departureDate.split('-');
@@ -195,15 +193,15 @@ function bookNewTrip(event) {
     alert('Please check to make sure all fields are filled out and departure date is today or later.')
   } else {
     postNewTrip(newTrip)
-    .then(response => {
-      console.log(response.message);
-      if (response.message !== '404 error') {
-        getAllData(traveler.id);
-        domUpdates.displayBookingModal(newTrip, allDestinations);
-      } else {
-        domUpdates.displayPostErrorModal();
-      }
-    })
+      .then(response => {
+        console.log(response.message);
+        if (response.message !== '404 error') {
+          getAllData(traveler.id);
+          domUpdates.displayBookingModal(newTrip, allDestinations);
+        } else {
+          domUpdates.displayPostErrorModal();
+        }
+      })
   }
 }
 

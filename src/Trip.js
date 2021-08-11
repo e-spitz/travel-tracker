@@ -14,11 +14,11 @@ class Trip {
   }
 
   getTripTimeStamps() {
-   const startTime = new Date(this.date).getTime();
-   const addedTime = new Date(this.date).getDate() + this.duration;
-   const endTime = new Date(this.date).setDate(addedTime);
-   this.startDateTimeStamp = startTime;
-   this.endDateTimeStamp = endTime;
+    const startTime = new Date(this.date).getTime();
+    const addedTime = new Date(this.date).getDate() + this.duration;
+    const endTime = new Date(this.date).setDate(addedTime);
+    this.startDateTimeStamp = startTime;
+    this.endDateTimeStamp = endTime;
   }
 
   calculateTripCost(destinations) {

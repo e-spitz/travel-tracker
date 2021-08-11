@@ -30,19 +30,19 @@ class Traveler {
   findPastTrips(todayDate) {
     const todayTimeStamp = new Date(todayDate).getTime();
     const pastTrips = this.trips.filter(trip => trip.endDateTimeStamp < todayTimeStamp);
-      return pastTrips;
+    return pastTrips;
   }
 
   findPresentTrips(todayDate) {
     const todayTimeStamp = new Date(todayDate).getTime();
     const presentTrips = this.trips.filter(trip => trip.startDateTimeStamp <= todayTimeStamp && trip.endDateTimeStamp >= todayTimeStamp);
-      return presentTrips;
+    return presentTrips;
   }
 
   findUpcomingTrips(todayDate) {
     const todayTimeStamp = new Date(todayDate).getTime();
     const upcomingTrips = this.trips.filter(trip => trip.startDateTimeStamp > todayTimeStamp);
-      return upcomingTrips;
+    return upcomingTrips;
   }
 
   findPendingTrips() {
