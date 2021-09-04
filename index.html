@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://kit.fontawesome.com/10ffbe374d.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+  <title>Your Travel Tracker</title>
+</head>
+<body>
+  <main>
+    <!-- LOGIN PAGE -->
+    <section class='login-page'id='loginPage'>
+        <h1 class='login-title' id='loginTitle'>travel tracker</h1>
+        <p class='sign-in'>please sign in</p>
+    <section class='login-form' id='loginForm'>
+      <form role="form" class='login-inputs' id='loginInputs'>
+        <label for='username' class='username'>username:</label>
+        <input type='text' class='login-fields' id='username' autocomplete='off' required>
+        <label for='password' class='password'>password:</label>
+        <input type='password' class='login-fields' id='password' autocomplete='off' required>
+        <button class='login-btn' id='loginBtn'>wheels up!</button>
+      </form>
+    </section>
+    <p class='login-error hidden' id='loginError'>Invalid username or password. Please try again.</p>
+  </section>
+
+<!-- MAIN PAGE -->
+  <section class='main-page hidden' id='mainPage'>
+    <!-- MAIN PAGE HEADER -->
+    <header class='main-header' id='mainHeader'>
+      <h1 class='main-title'><i class="fas fa-globe-europe"></i>your travel tracker</h1>
+      <span class='logout-btn' id='logoutBtn'>log out</span>
+    </header>
+    <section class='cost-logout-section' id='costLogoutSection'>
+      <h2 class='total-spent-msg'>total spent this year: </h2>
+      <p class='total-spent' id='totalSpent'></p>
+    </section>
+    <!-- MAIN PAGE GREETING -->
+    <section class='greeting' id='greeting'>
+      <h3 class='greeting-msg' id='greetingMsg'></h3>
+    </section>
+    <!-- MAIN PAGE TOTAL COST -->
+    <!-- NAV BUTTONS -->
+    <nav class='nav-buttons' id='navButtons'>
+      <button class='nav-btn' id='past'>past trips</button>
+      <button class='nav-btn' id='present'>present trips</button>
+      <button class='nav-btn' id='future'>future trips</button>
+      <button class='nav-btn' id='pending'>pending trips</button>
+      <button class='nav-btn' id='all'>all trips</button>
+    </nav>
+
+
+<!-- BOOKING SECTION -->
+  <section class="booking-section" id='bookingSection'>
+      <h4 for="click-to-book-link" class="click-to-book" id='clickToBook'>
+        >>  book your next trip  <<
+      </h4>
+      <!-- FORM -->
+      <form role='booking-form' class='booking-form hidden' id="bookingForm">
+        <div class="input">
+          <!-- DESTINATION -->
+          <label for="destinationForm">choose a destination:
+            <select name="destination-choices" class='form-fields' id="destinationChoices" required>
+              <option class='form-fields' value="0" required>choose destination</option>
+            </select>
+          </label>
+        </div>
+        <div class="input">
+          <!-- DEPARTURE -->
+          <label for="departureDateForm">departure date:
+            <input name="departure-date-input" class='form-fields' id="departureDateInput" type="date" max="2025-12-31" required>
+          </label>
+        </div>
+        <div class="input"></div>
+        <!-- DURATION -->
+          <label for="durationForm">trip duration:
+            <input name="duration-input" class='form-fields'id="durationInput" type="number" min="1" required>
+          </label>
+        </div>
+        <div class="input">
+          <!-- TRAVELERS -->
+          <label for="travelersForm">number of travelers:
+            <input name="travelers-input" class='form-fields' id="travelersInput" type="number" min="1" required>
+          </label>
+        </div>
+        <!-- COST AND BOOK TRIP BUTTONS -->
+        <div class="booking-btns">
+          <button class="cost-btn" id="costBtn">estimated trip cost</button>
+          <button class="book-btn" id="bookBtn">book your trip</button>
+        </div>
+      </form>
+      <!-- BOOKING ERROR -->
+      <p class='booking-error' id='bookingError'></p>
+    </section>
+  <!-- ESTIMATE COST MODAL -->
+    <section class="cost-modal hidden" id="costModal">
+      <article class="modal-content" id='modalContent'>
+      </article>
+    </section>
+    <!-- BOOKING CONFIRMATION MODAL -->
+    <section class="book-modal hidden" id="bookModal">
+      <article class="book-modal-content" id='bookModalContent'>
+      </article>
+    </section>
+<!-- TRIP CARDS -->
+    <section class='trips' id='trips'>
+      <h5 class="trip-cards-header" id="tripCardsHeader"></h5>
+       <section class='trip-cards-container' id='tripCardsContainer'>
+       </section>
+    </section>
+
+  </section>
+  </main>
+  <script src="bundle.js"></script>
+</body>
+</html>
